@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 2</title>
+</head>
+<body>
+    
+    <button id="tipo" onclick="controllo()">Esercizio 1</button><br>
+
+    <button id="tipo2" onclick="tipo()">Esercizio 2</button><br>
+
+    <label for="parola">Inserisci la stringa da analizzare per la parola più lunga</label>
+    <input type="text" id="parola">
+    <button id="tipo3" onclick="parola()">Esercizio 3</button><br>
+
+    <label for="numero">Inserisci un numero</label>
+    <input type="text" id="numero">
+    <button id="tipo5" onclick="numero()">Esercizio 5</button><br>
+
+    <button id="tipo7" onclick="riempire()">Esercizio 6</button><br>
+
+    <button id="tipo7" onclick="duplicati()">Esercizio 7</button><br>
+
+    <button id="tipo8" onclick="sommaarray()">Esercizio 8</button><br>
+
+    <div id="messaggi"></div>
+
+    <script type="text/javascript">
+        var inn = document.getElementById("messaggi");
+        var msg;
+        
+
+        function controllo() {
+            inn.innerHTML = "";
+            var parola = prompt("Quale parola vuoi inserire per il controllo?");
+            var carattere = prompt("Quale lettera vuoi controllare?");
+            var cont = 0;
+                for(var i = 0; i < parola.length; i++) {
+                    if (parola.charAt(i) == carattere) {
+                        cont++;
+                    }
+                }
+                inn.innerHTML = "Il numero dei caratteri presenti è: " + cont;
+        }
+
+        function tipo() {
+            inn.innerHTML = "";
+            var an = 1;
+            var an1 = "Ciao";
+            var an2;
+            var an3 = Object;
+            inn.innerHTML += "Il tipo è "+ (typeof an) + "<br>";
+            inn.innerHTML += "Il tipo è "+ (typeof an1) + "<br>";
+            inn.innerHTML += "Il tipo è "+ (typeof an2) + "<br>";
+            inn.innerHTML += "Il tipo è "+ (typeof an3) + "<br>";
+        }
+
+        function parola() {
+            inn.innerHTML = "";
+            var analisi = document.getElementById("parola").value;
+            var controllo = analisi.split(" ");
+            var verifica = "";
+            console.log(controllo);
+            for (var indice in controllo) {
+                if (verifica.length <= controllo[indice].length) {
+                    verifica = controllo[indice];
+                }            
+            }
+            inn.innerHTML = "La parola più lunga è: " + verifica;
+        }
+
+        function numero() {
+            inn.innerHTML = "";
+            msg = "";
+            var num = document.getElementById("numero").value;
+            for (var index = 0; index < num.length; index++) {
+                if(num.charAt(index) % 2 == 0) {
+                    msg += num.charAt(index) + "-";
+                } else {
+                    msg += num.charAt(index);
+                }
+            }
+            inn.innerHTML = msg;
+        }
+
+        function riempire() {
+            inn.innerHTML = "";
+            msg = "";
+            var newArr = [];
+            var array = [
+                "pippo",
+                "libro",
+                "gatto",
+                "cane",
+                "libro",
+                "giardino",
+                "ristorante"
+            ];
+            for (var x = 0; x < array.length; x++) {
+                    newArr.push(array[x]);
+                }
+            inn.innerHTML = "Il nuovo array è " + newArr;
+        }
+
+        function duplicati() {
+            inn.innerHTML = "";
+            msg = "";
+            var found;
+            var newArr = [];
+            var array = [
+                "pippo",
+                "libro",
+                "gatto",
+                "cane",
+                "libro",
+                "giardino",
+                "ristorante"
+            ];
+            var len = array.length;
+            for (var x = 0; x < len; x++) {
+                found = undefined;
+                for (var y = 0; y < newArr.length; y++) {
+                    if (array[x] === newArr[y]) {
+                        found = true;
+                    }
+                }
+                if (found != true) {
+                    newArr.push(array[x]);
+                }
+            }
+            inn.innerHTML = "Il nuovo array è " + newArr;
+        }
+
+        function sommaarray() {
+            inn.innerHTML = "";
+            msg = "Output = [";
+            var array1 = [1,0,2,4,6];
+            var array2 = [0,4,5,8,7];
+            for(var index in array1) {
+                    msg += array1[index] + array2[index] + ", ";
+                }
+            
+            msg += "]";
+            inn.innerHTML = msg;
+        }
+       
+    </script>
+    
+</body>
+</html>

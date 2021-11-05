@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="pagina">
+        <h1 id="titolo">benvenuto sulla pagine</h1>
+        <ul>
+            <li class="rosso" id="uno">Acqua</li>
+            <li class="rosso" id="due">Pane</li>
+            <li class="rosso" id="tre">Frutta</li>
+            <li class="rosso" id="quattro">Biscotti</li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+    //get element by id - singolo
+        var uno = document.getElementById("uno");
+        uno.innerHTML = "Birra";
+        uno.className = "blu";
+
+    //get element by tag name
+        var tutti = document.getElementsByTagName("li");
+        tutti[3].className = "blu";
+
+        for(var i = 0; i < tutti.length; i++) {
+            tutti[i].className = "blu";
+        }
+    //get element by class name - da sostituire con QuerySelector
+        var elementi = document.getElementsByClassName("blu");
+        if(elementi.length > 0) {
+            for(var i = 0; i < elementi.length; i++) {
+                elementi[i].className = "rosso";
+            }
+        }
+
+    </script>
+    
+</body>
+</html>

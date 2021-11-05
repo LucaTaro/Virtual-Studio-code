@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cinema JS all'aperto</h1>
+
+    <p>Questa è la selezione dei nostri film</p>
+
+    <div class="container">
+        <h1 id="titolo"></h1>
+            <figure>
+                <img id="locandina">
+            </figure>
+
+        <ul id="attori">
+
+        </ul>
+
+        <p id="genere"></p>
+        <p id="durata"></p>
+        <p id="anno"></p>
+
+        <button id="indietro" onclick="vaiIndietro()">Indietro</button>
+        <button id="avanti" onclick="vaiAvanti()">Avanti</button>
+    </div>
+
+    <script>
+
+        var film = [
+            {
+                titolo: "Shutter island",//chiave : valore
+                durata: 120,
+                genere: "thriller, Drammatico",
+                attori: ["Leonardo DiCaprio", "Mark Ruffalo", "Michelle Williams"],
+                locandina: "https://pad.mymovies.it/filmclub/2009/03/099/locandina.jpg"
+            },
+            {
+                titolo: "Scary movie 3",
+                durata: 90,
+                genere: "Commedia, Grottesco",
+                attori: ["Anna Faris", "Charlies Sheen", "Regina Hall"],
+                locandina: "https://pad.mymovies.it/filmclub/2004/02/010/locandinapg1.jpg" 
+            },
+            {
+                titolo: "Interstellar",
+                durata: 169,
+                genere: "Fantascienza",
+                attori: ["Matthew McConaughey", "Anne Hathaway", "Micheal Caine"],
+                locandina: "https://pad.mymovies.it/filmclub/2014/01/001/locandina.jpg" 
+            },
+            {
+            titolo: "Il Discorso del Re",
+            durata: 120,
+            genere: "Drammatico, Storico",
+            attori: ["Colin Firth", "Geoffrey Rush", "Helena Bonham Carter"],
+            locandina: "https://pad.mymovies.it/filmclub/2010/03/042/locandina.jpg"
+            },
+            {
+            titolo: "Io sono leggenda",
+            durata: 100,
+            genere: "Fantascienza",
+            attori: ["Will Smith", " Alice Braga", "Dash Mihok"],
+            locandina: "https://pad.mymovies.it/filmclub/2007/02/235/locandina.jpg"
+            },
+            {
+            titolo: "Mamma ho perso l'aereo",
+            durata: 90,
+            genere: "Commeddia",
+            attori: ["Macaulay Culkin", "Joe Pesci", "Daniel Stern", "Catherine O'Hara"],
+            locandina: "https://pad.mymovies.it/filmclub/2006/08/262/locandinapg1.jpg"
+            }
+        ];
+
+        var titolo = document.querySelector("#titolo");
+        var durata = document.querySelector("#durata");
+        var genere = document.querySelector("#genere");
+        var attori = document.querySelector("#attori");
+        var locandina = document.querySelector("#locandina");
+
+        function inserisciFilm(indice) {
+            titolo.innerHTML = film[indice].titolo;
+            locandina.setAttribute("src", film[indice].locandina);
+            genere.innerHTML = film[indice].genere;
+            var elenco = "";
+            for (var index = 0; index < film[indice].attori.length; index++) {
+                elenco += "<li><a href='https://it.wikipedia.org/wiki/" + film[indice].attori[index] + "'>" + film[indice].attori[index] + "</a></li>";                
+            }
+            attori.innerHTML = elenco;
+            durata.innerHTML = film[indice].durata;
+        }
+
+        var contatore = 0;
+        function vaiAvanti() {
+            inserisciFilm(contatore);
+            contatore++;
+        }
+        
+
+    </script>
+    
+</body>
+</html>

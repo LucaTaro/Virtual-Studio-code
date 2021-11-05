@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Cose da comprare</h1>
+
+    <input type="text" id="item">
+
+    <input type="button" value="Aggiungi" onclick="aggiungi()">
+
+    <p>Lista:</p>
+
+    <ul id="lista"></ul>
+
+    <script type="text/javascript">
+        
+        function aggiungi() {
+            var nome = document.getElementById("item").value;
+            var spesa = document.getElementById("lista");
+            spesa.innerHTML += "<li>" + nome + "</li>";
+            document.getElementById("item").value = "";
+        }
+
+    
+
+    </script>
+    
+</body>
+</html>

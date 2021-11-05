@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="pagine">
+        <h1 id="titolo">Lista
+            <ul>
+                <li class="blu" id="uno">Acqua</li>
+                <li class="blu" id="due">Pasta</li>
+                <li class="blu" id="tre">Carne</li>
+                <li class="blu" id="quattro">Insalata</li>
+            </ul>
+        </h1>
+    </div>
+
+    <script>
+        var nuovoEl = document.createElement("li");
+        var nuovoTxt = document.createTextNode("Birra");
+
+        nuovoEl.appendChild(nuovoTxt);//<li>Birra</li>
+        nuovoEl.setAttribute("class", "blu");
+
+        var genitore = document.querySelector("ul")[0];//[0] per prendere il primo ul nella pagina
+
+        genitore.appendChild(nuovoEl);
+
+
+        var elementoDaRimuovere = document.getElementsByTagName("li")[2];
+        genitore.removeChild(elementoDaRimuovere);
+    </script>
+    
+</body>
+</html>

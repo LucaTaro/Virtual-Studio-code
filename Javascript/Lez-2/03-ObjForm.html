@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Compila il form con i tuoi dati</h1>
+   
+        Nome:<input type="text" id="nome"><br>
+        Cognome:<input type="text" id="cognome"><br>
+        Anno di nascita:<input type="text" id="annoNascita"><br>
+        <input type="button" value="registrati" onclick="registraUser()">
+        <input type="button" value="registrati2" onclick="registraUser2()">
+    
+    <div id="info"></div>
+
+    <script type="text/javascript">
+        var info = document.getElementById("info"); 
+    
+        function registraUser() {
+            var user = new Object();
+            user.nome = document.getElementById("nome").value;
+            user.cognome = document.getElementById("cognome").value;
+            user.annoNascita = document.getElementById("annoNascita").value;
+        }
+
+        /////////////////////////////////////////////////////////////////////////
+
+        function User2(nome, cognome, annoNascita) {
+            this.nome = nome;
+            this.cognome = cognome;
+            this.annoNascita = annoNascita;
+
+            this.info = function() {
+                return "Ciao " + nome + " " + cognome;
+            }
+        }
+
+        function registraUser2() {
+            var nome = document.getElementById("nome").value;
+            var cognome = document.getElementById("cognome").value;
+            var annoNascita = document.getElementById("annoNascita").value;
+
+            var utente = new User2(nome, cognome, annoNascita);
+
+            for(const chiave in utente) {
+                if(typeof utente[chiave] != "function") {
+                    info.innerHTML += chiave + ": " + utente[chiave] + "<br>";
+                }
+            }
+            //document.getElementById("info").innerHTML = utente.info();
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="contenitore"></div>
+
+    <script type="text/javascript">
+        var colori;
+        colori = ["Rosso", "Blu", "Giallo"];
+        colori.push("Verde");
+        colori.sort();
+        colori.reverse();
+        colori.pop(); //Tagliare l'ultimo elemento dell'array
+        console.log(colori);
+
+        var itemDue = colori[1];
+
+        console.log(itemDue);
+
+        var lunghezzaArray = colori.length;
+
+        console.log(lunghezzaArray);
+
+        //dichiarazione costruttore
+        var frutti = new Array("Arancia", "Pera", "Mela", "Ciliegia");
+
+        //update valore con uno nuovo
+        frutti[1] = "Kiwi";
+
+        console.log(frutti);
+
+        //stampare array nel div con id contenitore
+         var elementoContenitore = document.getElementById("contenitore");
+         console.log(elementoContenitore);
+
+         //Carico nel contenitore l'array
+
+         elementoContenitore.innerHTML = "<h2>" + frutti + "</h2>";
+
+         var arrayMisto = ["Elefante", 30, false, "Leone", "scimmia", 12.45];
+
+         console.log(arrayMisto);
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h4 class="prova">Ciao</h4>
+    <h4 class="prova">Ciao</h4>
+    <h4 class="prova">Ciao</h4>
+    <h4 class="prova">Ciao</h4>
+    <h4 class="prova">Ciao</h4>
+
+    <div id="demo"></div>
+
+    <script type="text/javascript">
+        var msg = "";
+
+        var colori = ["bianco", "nero", "arancione", "blallo"];
+
+        colori.forEach(miaFunzione);
+
+        function miaFunzione(item, indice) {
+            msg += indice + " " + item + "<br>";
+        }
+
+        document.getElementById("demo").innerHTML = msg;
+        ///////////////////////////////////////////////
+        colori.forEach(item => {
+            console.log((item));
+        });
+        
+        //... trasforma un collection in un array
+        var titolo = document.getElementsByClassName("prova");
+        [...titolo].forEach(t => {
+            console.log(t.innerHTML);
+        })
+
+    </script>
+    
+</body>
+</html>

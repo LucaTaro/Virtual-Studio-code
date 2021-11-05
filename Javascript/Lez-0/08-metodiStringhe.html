@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+        var txt = "Oggi ho vauto 9 ore di lezione";
+        var lungh = txt.length; //calcola la lunghezza dei caratteri. | lenght è una proprietà
+        var search1 = txt.indexOf("lezione"); //l'indice in cui comincia una data parola o lettera, guarda la prima parola o lettera trovata
+        var search2 = txt.lastIndexOf("i");
+        var search3 = txt.charAt(4); //restituisce il carattere nella posizione indicata
+
+        var testo = "Andiamo in pausa";
+        var sl = testo.slice(10, 15);//va vedere i caratteri dalle posizione indicate
+        var sl2 = testo.substring(10,16);//stessa cosa di slice ma crea un array
+
+        var stringa = "Il miglior browser al mondo è explorer";//sostituisce la parola
+        var sost = stringa.replace("explore", "edge");
+
+        var string2 = "NON URLARE";
+        var low = string2.toLocaleLowerCase();
+
+        var string3 = "ciao-come-stai";
+        var stringINArray = string3.split("");//divide tutta la stringa in un array di caratteri
+        var stringINArray2 = string3.split("-");//splitta sul carattere indicato
+
+        var string4 = ["a", "b", "c", "d"];
+        var arToString = string4.join("");//unisce l'array in stringa
+    </script>
+</body>
+</html>

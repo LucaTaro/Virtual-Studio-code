@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizi parte3</title>
+</head>
+<body>
+
+    <input type="number" id="num1">
+    <input type="number" id="num2">
+    <button id="es1" onclick="esercizio1()">Esercizio 1</button><br>
+
+    <button id="es2" onclick="esercizio2()">Esercizio 2</button><br>
+
+    <input type="number" id="num3">
+    <button id="es4" onclick="esercizio4()">Esercizio 4</button><br>
+
+    <button id="es5" onclick="esercizio5()">Esercizio 5</button><br>
+
+    <button id="es6" onclick="esercizio6()">Esercizio 6</button><br>
+
+    <button id="es7" onclick="esercizio7()">Esercizio 7</button><br>
+
+    <div id="esercizio"></div>
+
+    <script type="text/javascript">
+        var eser = document.getElementById("esercizio");
+
+        function esercizio1() {
+            ser.innerHTML = "";
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+            eser.innerHTML += "La moltiplicazione dei due numeri è " + (num1 * num2) + "<br>";
+            eser.innerHTML += "La divisione dei due numeri è " + (num1 / num2);
+
+        }
+
+        function esercizio2() {
+            eser.innerHTML ="URL della pagine è " + window.location.href; 
+        }
+
+        function esercizio4() {
+            var num = document.getElementById("num3").value;
+            var valore = num / 19;
+            eser.innerHTML = "La divisione è " + valore + "<br>";
+            if(num > 19) {
+                valore = (num / 19) * 3;
+                eser.innerHTML += "il triplo del valore della differenza se il numero specificato è maggiore di 19 " + valore;
+            }
+        }
+
+        function esercizio5() {
+            var num = 422;
+            if ((num > 20 && num < 100) || (num > 20 && num < 400)) {
+                eser.innerHTML = "Il numero si trova nei due insiemi";
+            } else {
+                eser.innerHTML = "Il numero non si trova nei due insiemi";
+            }
+        }
+
+        function esercizio6() {
+            eser.innerHTML = "";
+            var stringa = "Acciderbolina";
+            eser.innerHTML += stringa + "<br>";
+            var stringINArray = stringa.split("");
+            stringINArray[5] = "";
+            var st = stringINArray.join("");
+            eser.innerHTML += st;
+        }
+
+        function esercizio7() {
+            eser.innerHTML = "";
+            var stringa = "Acciderbolina";
+            eser.innerHTML += stringa + "<br>";
+            var stringINArray = stringa.split("");
+            var nstringa;
+            nstringa = stringINArray[0];
+            for (var index = 0; index < stringINArray.length; index++) {
+                nstringa += stringINArray[index];                
+            }
+            nstringa += stringINArray[0];
+            eser.innerHTML += nstringa;
+        }
+
+    </script>
+    
+</body>
+</html>

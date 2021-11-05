@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizi</title>
+</head>
+<body>
+
+    <button id="es1" onclick="esercizio1()">Esercizio 1</button><br>
+    <button id="es2" onclick="esercizio2()">Esercizio 2</button><br>
+    <button id="es3" onclick="esercizio3()">Esercizio 3</button><br>
+    <button id="es4" onclick="esercizio4()">Esercizio 4</button><br>
+    <button id="es5" onclick="esercizio5()">Esercizio 5</button><br>
+    <button id="es6" onclick="esercizio6()">Esercizio 6</button><br>
+    <button id="es7" onclick="esercizio7()">Esercizio 7</button><br>
+    <button id="es8" onclick="esercizio8()">Esercizio 8</button><br>
+
+    <div id="esercizio"></div>
+
+    <script type="text/javascript">
+
+        var eser = document.getElementById("esercizio");
+        var msg;
+        
+        function esercizio1() {
+            eser.innerHTML = "<br>";
+            var numeri =  [
+                1,
+                2,
+                10,
+                4,
+                5
+            ] 
+            var numgrande = 0;
+            for (var i = 0; i < numeri.length; i++) {
+                if (numgrande < numeri[i])
+                    numgrande = numeri[i];
+            }   
+            eser.innerHTML = numgrande + "<br><br>";
+        }
+
+        //Es 2
+        function esercizio2() {
+            eser.innerHTML = "<br>";
+            for (var i = 0; i <= 15; i++) {
+                if (i % 2 == 0) {
+                    msg = "Il numero " + i + " è pari <br>" ;
+                    eser.innerHTML += msg;
+                } else {
+                    msg = "Il numero " + i + " è dispari <br>";
+                    eser.innerHTML += msg;
+                }
+            }
+            eser.innerHTML += "<br>";
+        }
+
+        function esercizio3() {
+            eser.innerHTML = "<br>";
+            for (var i = 1; i <= 100; i++) {
+                if ((i % 3 == 0) && (i % 5 == 0)) {
+                    msg = "Zoom boom <br>";
+                    eser.innerHTML += msg;
+                } else if (i % 3 == 0) {
+                    msg = "zoom <br>";
+                    eser.innerHTML += msg;
+                } else if (i % 5 == 0) {
+                    msg = "boom <br>";
+                    eser.innerHTML += msg;
+                } else  {
+                    msg = "Il numero " + i + " Non è divisibile ne per 3 ne per 5 <br>";
+                    eser.innerHTML += msg;
+                }
+            }
+        msg = "<br>";
+        }
+
+        function esercizio4() {
+            eser.innerHTML = "<br>";
+            msg = "<br>";
+            for (var i = 0; i < 5; i++) {
+                msg += "*";
+                eser.innerHTML += msg;
+            }
+            eser.innerHTML += "<br>";
+        }
+
+        function esercizio5() {
+            eser.innerHTML = "<br>";
+            var multipli = 0;
+            for (var i = 0; i < 1000; i++) {
+                if ((i % 3 == 0) || (i % 5 == 0)) {
+                    multipli += i;
+                }
+            }
+            eser.innerHTML += "<br> La somma i multipli di 3 e 5 è " + multipli + "<br>";
+            msg = "<br>";
+        }
+
+        function esercizio6() {
+            eser.innerHTML = "<br>";
+            msg = "<br>";
+            var righe = prompt("Quante righe vuoi per stampare il pattern?");
+            eser.innerHTML += "<br>Ecco il pattern richiesto";
+            for (i = 0; i < righe; i++) {
+                msg += i + 1;
+                eser.innerHTML += msg;
+            }
+            msg = "<br>";
+        }
+
+        function esercizio7() {   
+            eser.innerHTML = "<br>";       
+            var numero = prompt("Inserisci un numero ");
+            var temp = 0;
+            msg = "";
+            for (var i = 1; i <= numero; i++) {
+                for (var j = 1; j <= i; j++) {
+                    temp++;
+                    msg = temp + " ";
+                    eser.innerHTML += msg + " ";
+                }
+                eser.innerHTML += "<br>";
+            }
+            msg = "<br>";
+        }
+
+        function esercizio8() {
+            eser.innerHTML = "<br>";
+            msg = "<br>";
+            var righe = prompt("Quante righe vuoi per stampare il pattern?");
+            for (var i = 0; i < righe; i++) {
+                msg += "@";
+                eser.innerHTML += msg;
+            }
+            eser.innerHTML += "<br>";
+        }
+
+    </script>
+    
+</body>
+</html>

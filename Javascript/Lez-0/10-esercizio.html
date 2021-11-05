@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 id="benvenuto"></h1>
+    <ul id="listaOgg"></ul>
+    <div id="resocontoPrezzi">
+        <div id="totale"></div>
+        <div id="totaleIvato"></div>
+        <div id="spedizione"></div>
+        <div id="granTotal"></div>
+    </div>
+
+    <script type="text/javascript">
+        var nomeUtente = prompt("Inserire il nome utente");
+        var stampa = document.getElementById("benvenuto");
+        stampa.innerHTML = "Ciao " + nomeUtente;
+
+        var oggetti = ["Fornetto", "Caffettiera", "Forno microonde", "Cordeless", "TV", "Lavastoviglie"];
+        var prezzi = [49, 15, 249, 69, 699, 499];
+        var listaOggetti = "";
+        var totale = 0;
+
+        for (var i in oggetti) {
+            listaOggetti += "<li>" + oggetti[i] + " " + prezzi[i] + "</li>";
+            totale += prezzi[i];
+        }
+        var stampaOggetti = document.getElementById("listaOgg");
+        stampaOggetti.innerHTML = listaOggetti;
+
+        var euro = document.getElementById("totale");
+        euro.innerHTML = "Il totale speso è " + totale + "€";
+
+        var prezzoIva = document.getElementById("totaleIvato");
+        var iva = 0;
+        iva = (totale * 0.22) + totale;
+        prezzoIva.innerHTML = "Il totale con IVA è: " + iva + "€";
+
+        var spedizione = document.getElementById("spedizione");
+        var costoSpedizione = 9.90;
+        spedizione.innerHTML = "La spedizione degli oggetti ha costo di " + costoSpedizione + "€";
+
+        var spedizioneT = document.getElementById("granTotal");
+        var costoTotale = iva + costoSpedizione;
+        spedizioneT.innerHTML = "Con un costo totale con spedizione è di " + costoTotale + "€";
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista della spesa</title>
+</head>
+<body>
+    <h1>Scontrino - Lista della spesa</h1>
+
+    <ul id="lista"></ul>
+
+    <div id="demo"></div>
+
+    <script type="text/javascript">
+    
+    var elLista = document.getElementById("lista");
+    var elTot = document.getElementById("demo");
+
+    var coseDaComprare = ["Uova", "latte", "pane", "acqua", "vino"];
+    var prezzi = [1.20, 1.10, 0.80, 1.45, 6.70];
+
+    var liList = " ";
+    var totale = 0;
+
+    
+    for (var i in coseDaComprare) {
+        liList  += "<li>" + coseDaComprare[i] + " - " + prezzi[i] + " € </li>";
+        totale += prezzi[i];
+    }
+    
+    elLista.innerHTML = liList;
+    elTot.innerHTML = "Totale è " + totale + " €";
+
+    </script>
+</body>
+</html>

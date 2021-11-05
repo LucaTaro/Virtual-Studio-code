@@ -1,0 +1,62 @@
+body {
+    font-family: 'Cookie', cursive;
+    background: pink;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color:yellowgreen;
+    font-weight: normal;
+    text-transform: uppercase; /*tutto in grassetto*/
+}
+
+p {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+img {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.Main {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box {
+    padding: 1rem;
+    border: 0.9rem solid black;
+}
+
+.box h2 {
+    font-style: italic;
+    text-transform: none;
+}
+
+.Ingredienti {
+    background: orange;
+    /*padding: 16px; margine interno al div
+    border: 1px solid royalblue; spessore tipologia colore*/
+}
+
+.Consiglio {
+    background: orangered;
+}
+
+.ingredienti strong {
+    color: blueviolet;
+}
+
+.passo {
+    background: brown;
+    padding: 0.4rem 0.5rem;/*valore 1 sopra e sotto, valore 2 destra e sinistra*/
+    font-weight: bold;
+    color: white;
+}

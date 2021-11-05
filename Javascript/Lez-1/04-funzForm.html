@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Nome: <input type="text" id="mioNome" value="">
+
+    <p>Digita il tuo nome e clicca sul pulsante per farti salutare</p>
+
+    <input type="button" value="clicca" onclick="miaFunz()">
+
+    <p id="demo"></p>
+
+    <script type="text/javascript">
+    //recuper il valore input
+        function miaFunz() {
+            var nome = document.getElementById("mioNome").value;
+            //var demo = document.getElementById("demo");
+            //demo.innerHTML = "Hello general " + nome;
+
+            document.getElementById("demo").innerHTML = "hello general " + nome;
+            document.getElementById("mioNome").value = " Skywalker";
+
+        }
+    </script>
+
+</body>
+</html>

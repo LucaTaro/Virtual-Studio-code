@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+table {
+    border: 0.1rem solid black;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    margin-top: 0.25rem;
+}
+
+td, th {
+    border: 0.1rem solid orange;
+    padding: 0.25rem;
+}
+
+thead {
+    padding: 1.5rem;
+}
+
+tfoot {
+    background: lightyellow;
+}
+
+tr:nth-of-type(odd) { /*seleziona righe dispari, even per le pari*/
+    background:lightpink;
+}
+
+#voli {
+    width: 30%;
+    margin: 0 auto;
+}

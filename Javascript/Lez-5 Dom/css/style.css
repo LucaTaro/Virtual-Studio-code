@@ -1,0 +1,23 @@
+.rosso {
+    color: red;
+}
+
+.blu {
+    color: blue;
+}
+
+.barrato {
+    text-decoration: line-through;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: lightgrey;
+}
+
+.titolo {
+    color: magenta;
+    text-align: center;
+    font-size: 5rem;
+}
+

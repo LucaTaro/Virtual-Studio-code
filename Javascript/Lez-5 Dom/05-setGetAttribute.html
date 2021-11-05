@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="pagine">
+        <h1 id="titolo">Lista
+            <ul>
+                <li class="blu" id="uno">Acqua</li>
+                <li class="blu" id="due">Pasta</li>
+                <li class="blu" id="tre">Carne</li>
+                <li class="blu" id="quattro">Insalata</li>
+            </ul>
+        </h1>
+    </div>
+
+    <script>
+        var primoEl = document.getElementById("uno");
+        
+        if(primoEl.hasAttribute("class")) {
+            var attr = primoEl.getAttribute("class");
+            console.log("la classe del primo elemento è : " + attr);
+        }
+
+        var terzoEl = document.querySelector("#tre");
+        terzoEl.setAttribute("class", "rosso");
+        terzoEl.setAttribute("title", "terzo elemento della lista");
+        terzoEl.setAttribute("style", "font-size: 3rem");
+
+        if(terzoEl.hasAttribute("Class")) {
+            terzoEl.removeAttribute;
+        }
+
+        primoEl.classList.add("barrato");//aggiungi attributi alla classe
+
+        var elDue = document.getElementsByTagName("li").item(2);
+        var precedente = elDue.previousElementSibling;
+        var successivo = elDue.nextElementSibling;
+
+        precedente.classList.add("barrato");
+        successivo.classList.add("barrato");
+
+    </script>
+    
+</body>
+</html>

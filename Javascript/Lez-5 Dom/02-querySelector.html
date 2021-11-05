@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="pagine">
+        <h1 id="titolo">Lista
+            <ul>
+                <li class="blu" id="uno">Acqua</li>
+                <li class="blu" id="due">Pasta</li>
+                <li class="blu" id="tre">Carne</li>
+                <li class="blu" id="quattro">Insalata</li>
+            </ul>
+        </h1>
+    </div>
+    
+    <script type="text/javascript">
+        var primo = document.querySelector("#uno");
+        console.log(primo);
+
+        var elementi = document.querySelector("li.blu");//restituisce solo il primo elemento
+        console.log(elementi);
+
+        var elementi2 = document.querySelector("li");
+        console.log(elementi2);
+
+        var elementi3 = document.querySelectorAll(".blu");
+        console.log(elementi3);
+
+        elementi3[1].className = "rosso";
+
+        if(elementi3.length > 0) {
+            for(var i = 0; i < elementi3.length; i++) {
+                elementi3[i].className = "blu";
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>

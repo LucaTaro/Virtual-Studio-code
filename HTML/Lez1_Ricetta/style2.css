@@ -1,0 +1,28 @@
+.blue {
+    background-color: blue;
+    width: 50%;
+}
+
+.red { 
+    background: red;
+    width: 50%;
+}
+
+.green {
+    background: chartreuse;
+    width: 50%;
+}
+
+html {
+    font-size: 20px;
+}
+
+.container {
+    background: red;
+    width: 50vw;
+    height: 50vh;
+}
+
+.box {
+    font-size: 0.5em;
+}

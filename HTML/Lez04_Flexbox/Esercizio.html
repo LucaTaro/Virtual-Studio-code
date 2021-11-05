@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <div class="contenitore1">
+        <div>
+            <table>
+                <thead><strong>Group A</strong></thead>
+                <tr>
+                    <th class="squadre"></th>
+                    <th>Giocate</th>
+                    <th>Vittorie</th>
+                    <th>Pareggi</th>
+                    <th>Sconfitte</th>
+                    <th>Segnati</th>
+                    <th>Subiti</th>
+                    <th>Differenza reti</th>
+                    <th>Punti</th>
+                </tr>
+                <tr class="bordo">
+                    <th>Paris</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>6</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                </tr>
+                <tr class="bordo">
+                    <th>Man. City</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>11</td>
+                    <td>6</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr class="bordo">
+                    <th>Club Brugge</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>4</td>
+                    <td>7</td>
+                    <td>-3</td>
+                    <td>4</td>
+                </tr>
+                <tr class="bordo">
+                    <th>Leipzig</td>
+                    <td>3</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>3</td>
+                    <td>6</td>
+                    <td>11</td>
+                    <td>-5</td>
+                    <td>0</td>
+                </tr>
+            </table>
+        </div>
+
+        <img src="Immagine/1.jpg" alt="1">
+    </div>
+    
+    <div class="contenitore2">
+        <img src="Immagine/2.jpg" alt="2">
+
+        <div>
+            <form action="" method="post">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required><br>
+                <label for="cognome">Cognome</label>
+                <input type="text" id="cognome" name="cognome" required>
+                <div class="tutti">
+                    <legend>Sesso</legend>
+                    <label for="sessom">M</label>
+                    <input type="radio" name="sesso" id="sessom" value="M">
+                    <label for="sessof">F</label>
+                    <input type="radio" name="sesso" id="sessof" value="F">
+                    <label for="sessob">Babbo natale</label>
+                    <input type="radio" checked="checked" name="sesso" id="sessob" value="babbonatale">
+                </div>
+                <div class="tutti">
+                    <legend>Lingue parlate</legend>
+                    <label for="inglese">Inglese</label>
+                    <input type="checkbox" id="Inglese" name="lingua" value="inglese">
+                    <label for="italiano">Italiano</label>
+                    <input type="checkbox" id="italiano" name="lingua" value="italiano">
+                    <label for="francese">Francese</label>
+                    <input type="checkbox" id="francese" name="lingua" value="francese">
+                    <label for="tedesco">Tedesco</label>
+                    <input type="checkbox" id="tedesco" name="lingua" value="tedesco">
+                    <label for="spagnolo">Spagnolo</label>
+                    <input type="checkbox" id="spagnolo" name="lingua" value="spagnolo">
+                </div>
+                <div class="tutti">
+                    <legend>Come hai scoperto i nostri servizi?</legend>
+                    <select name="interessi" id="interessi">
+                        <option value="ricerca">Ricerca online</option>
+                        <option value="passaparola">Passaparola</option>
+                        <option value="pubblicita">Pubblicità sui socia</option>
+                        <option value="spot">Spot TV</option>
+                    </select>
+                </div>
+                <div class="tutti">
+                    <label for="telefono">Numero di telefono</label>
+                    <input type="tel" name="telefono" id="telefono" pattern="[0-9]{3}-[0-9]{7}"><br>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="tutti">
+                    <input type="reset" value="Cancella">
+                    <input type="submit" value="Invia">
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

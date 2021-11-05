@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="pagine">
+        <h1 id="titolo">Lista</h1>
+            <ul>
+                <li class="blu" id="uno">Acqua</li>
+                <li class="blu" id="due">Pasta</li>
+                <li class="blu" id="tre">Carne</li>
+                <li class="blu" id="quattro">Insalata</li>
+            </ul>
+            <ul id="libri">
+                <li class="rosso" >Acqua<button id="btn">Elimina</button></li>
+                <li class="rosso" >Pasta<button id="btn">Elimina</button></li>
+                <li class="rosso" >Carne<button id="btn">Elimina</button></li>
+                <li class="rosso" >Insalata<button id="btn">Elimina</button></li>
+            </ul>
+    </div>
+
+    <script>
+        var libri = document.getElementsByTagName("ul")[1];
+
+        var firstChild = libri.firstElementChild;
+        var lastChild = libri.lastElementChild;
+
+        console.log(firstChild);
+        console.log(lastChild);
+
+        console.log(firstChild.firstChild.nodeType);
+        console.log(firstChild.lastChild);
+
+        lastChild.firstChild.textContent = "Guida galattica per autostoppisti";//modifica solo il testo
+        lastChild.innerHTML = "Guida galattica per autostoppisti";//così cambia tutto l'ultimo figlio, togliendo il bottono elimina
+
+        console.log(lastChild.firstElementChild.parentElement);
+        console.log(libri.lastElementChild.firstElementChild.parentElement);
+    </script>
+</body>
+</html>

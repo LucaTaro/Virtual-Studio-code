@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: row;/*questa è di default*/
+}
+
+.blue {
+    background: lightseagreen;
+    width: 30%;
+}
+
+.red {
+    background: red;
+    width: 30%;
+}
+
+.yellow {
+    background: yellow;
+    width: 30%;
+}

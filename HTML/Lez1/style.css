@@ -1,0 +1,29 @@
+h1 {
+    color:#af01c1;
+}
+
+h2 {
+    background:red ;
+}
+
+h3 {
+    font-style: italic ;
+}
+
+p {
+    text-align: right;
+}
+.intro {
+    color: orange;
+    font-size: 20px;
+    text-align: left;
+}
+
+#maintitle {
+    font-size: 40px;
+    color: red;
+}
+
+a {
+    background-color: yellow;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premio Oscar</title>    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>Premi oscar 2021 - Attori</h1>
+
+    <ul>
+        <li>
+            <img id="img1">
+        </li>
+        <li>
+            <img id="img2">
+        </li>
+        <li>
+            <img id="img3">
+        </li>
+        <li>
+            <img id="img4">
+        </li>
+    </ul>
+
+    <script>
+        var nomi = [
+            "Anthony Hopkins",
+            "Frances McDormand",
+            "Daniel Kaluuya",
+            "Youn Yuh-jung"
+        ];
+        var immagini = [
+            "img/Anthony_Hopkins.jpg",
+            "img/Frances_McDormand.jpg",
+            "img/Daniel_Kaluuya.jpg",
+            "img/Youn_Yuh-jung.jpg"
+        ];
+        var link = [
+            "https://it.wikipedia.org/wiki/Anthony_Hopkins",
+            "https://it.wikipedia.org/wiki/Frances_McDormand",
+            "https://it.wikipedia.org/wiki/Daniel_Kaluuya",
+            "https://it.wikipedia.org/wiki/Youn_Yuh-jung"
+        ];
+
+        var li = document.querySelectorAll("li");
+        var imm = document.querySelectorAll("img");//senza usare gli ID
+
+
+        for(var i = 0; i < li.length; i++) {
+            var h3 = document.createElement("h3");
+            var attore = document.createElement("a");
+            var testo = document.createTextNode(nomi[i]);
+            attore.setAttribute("href", link[i]);
+            imm[i].setAttribute("src", immagini[i]);//senza usare gli ID
+            li[i].prepend(h3);
+            h3.appendChild(attore);
+            attore.appendChild(testo);
+            
+
+            /*var id = "#img"+(i+1);
+            var elem = document.querySelector(id);
+            elem.setAttribute("src", immagini[i]);*///usando gli id
+        }
+
+        var titolo = document.querySelector("h1");
+        titolo.setAttribute("class", "titolo");
+
+    </script>
+    
+</body>
+</html>

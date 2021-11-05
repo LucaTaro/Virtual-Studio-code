@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cineteca</title>
+</head>
+<body>
+    
+    <h1>Benvenuto nella Cineteca</h1>
+
+    <div id="saluta"></div>
+
+    <div id="titoli"></div>
+
+    <script type="text/javascript">
+        var username = prompt("Identificati inserendo il tuo username");
+        var elSaluta = document.getElementById("saluta");
+
+        elSaluta.innerHTML = "<h2>Ciao " + username + "</h2>";
+
+        var film = ["Guida galattatica per autostoppisti", "Interstellar", "Shutter Island", "Sharkando", "Una notte da leoni", "The room", "Star Wars"];
+        
+        var elTitoli = document.getElementById("titoli");
+
+        // elTitoli.innerHTML = "<ul>" + 
+        //     "<li>" + film [0] +"</li>" + 
+        //     "<li>" + film [1]+ "</li>" +
+        //     "<li>" + film [2] +"</li>" +
+        //     "<li>" + film [3]+ "</li>" +
+        //     "<li>" + film [4]+ "</li>" +
+        //     "<li>" + film [5]+ "</li>" +
+        //     "<li>" + film [6]+ "</li>" + 
+        //     "</ul>"; ctrl+ù e selezione per commentare tutto
+
+        for(var indice in film) {
+            elTitoli.innerHTML += "<li>" + film[indice] + "</li>"; //+= aggiornamento variabile e passare successiva
+        }
+
+        
+    </script>
+</body>
+</html>

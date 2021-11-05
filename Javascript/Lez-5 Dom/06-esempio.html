@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h2>Numero di elementi da acquistare: </h2>
+    <ul>
+        <li>Frutta</li>
+        <li>Verdura</li>
+        <li>Pesce</li>
+        <li>Carne</li>
+        <li>Vino</li>
+    </ul>
+    
+    <div id="test"></div>
+
+    <script>
+        var nuovoEl = document.createElement("li");
+        var nuovoTxt = document.createTextNode("Spazzolino");
+        nuovoEl.appendChild(nuovoTxt);
+        var genitore = document.querySelector("ul");
+        genitore.appendChild(nuovoEl);
+
+
+        nuovoEl = document.createElement("li");
+        nuovoTxt = document.createTextNode("Lasagne");
+        nuovoEl.appendChild(nuovoTxt);
+        genitore.insertBefore(nuovoEl, genitore.firstChild);
+
+
+       var cambioColore = document.querySelectorAll("li");
+        if(cambioColore.length > 0) {
+            for(var i = 0; i < cambioColore.length; i++) {
+                cambioColore[i].setAttribute("class", "blu");
+            }
+        }
+
+        var lunghezza = document.querySelectorAll("li").length;
+        //var titolo = document.getElementsByTagName("h2")[0].innerHTML += lunghezza; funziona uguale in meno
+
+        var titolo = document.querySelector("h2");
+        var testo = titolo.textContent;
+
+        titolo.innerHTML = testo + lunghezza;
+        
+    </script>
+</body>
+</html>
