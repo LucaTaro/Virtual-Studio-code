@@ -15,11 +15,11 @@ create table parente (
     cognome varchar(30)
 ) select nome,cognome from studente;
 
-create table frocio like studente;
+create table edd like studente;
 
-insert into frocio select * from studente;
+insert into edd select * from studente;
 
-update frocio set email = 'sara piace il cazzo';
+update edd set email = 'sara è nana';
 
 select * from studente order by cognome;
 

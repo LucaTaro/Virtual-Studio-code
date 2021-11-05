@@ -40,22 +40,21 @@ select l.titolo, l.prezzo, l.pagine, e.nome "Edito da", a.nome, a.cognome
 from libro l, autore a, editore e, autore_libro al
 where l.e_id = e.id and a.id = a_libro.a_id and l.id = a_libro.libro_id
 
-create table if not exists africamerda (
+create table if not exists africa (
     capitale varchar(50) unique,
     stato varchar(30) unique,
     primary key(stato, capitale)
 );
 
-alter table africamerda
+alter table africa
 add popolazione int first;
 
-alter table africamerda
-modify popolazione int
+alter table africa
 after stato;
 
-alter table africamerda
+alter table africa
 change popolazione pop bigint,
 modify capitale varchar(30);
 
-alter table africamerda
+alter table africa
 drop pop;
