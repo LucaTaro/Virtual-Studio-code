@@ -1,0 +1,1 @@
+select AVG(prezzo) AS "prezzo medio" from libro; 
