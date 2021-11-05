@@ -85,6 +85,7 @@
         function inserisciFilm(indice) {
             titolo.innerHTML = film[indice].titolo;
             locandina.setAttribute("src", film[indice].locandina);
+            locandina.setAttribute("class", "dimImg");
             genere.innerHTML = film[indice].genere;
             var elenco = "";
             for (var index = 0; index < film[indice].attori.length; index++) {
@@ -95,9 +96,16 @@
         }
 
         var contatore = 0;
+        inserisciFilm(contatore);
+        
         function vaiAvanti() {
             inserisciFilm(contatore);
             contatore++;
+        }
+
+        function vaiIndietro() {
+            --contatore;
+            inserisciFilm(contatore);
         }
         
 
