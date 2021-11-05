@@ -25,8 +25,10 @@
         <p id="durata"></p>
         <p id="anno"></p>
 
-        <button id="indietro" onclick="vaiIndietro()">Indietro</button>
-        <button id="avanti" onclick="vaiAvanti()">Avanti</button>
+        <!-- <button id="indietro" onclick="vaiIndietro()">Indietro</button>
+        <button id="avanti" onclick="vaiAvanti()">Avanti</button> ctrl ù-->
+        <button id="indietro" onclick="ruota('indietro')">Indietro</button>
+        <button id="avanti" onclick="ruota('avanti')">Avanti</button>
     </div>
 
     <script>
@@ -97,16 +99,34 @@
 
         var contatore = 0;
         inserisciFilm(contatore);
-        
-        function vaiAvanti() {
+
+        function ruota(direzione) {
+            if (direzione == "indietro") {
+                if(contatore == 0) {
+                    contatore = film.length - 1;
+                } else {
+                    contatore--;
+                }
+            } else {
+                if (contatore >= film.length - 1) {
+                    contatore = 0;
+                } else {
+                    contatore++;
+                }
+            }
             inserisciFilm(contatore);
-            contatore++;
+        }
+        
+        /*function vaiAvanti() {
+            ++contatore;
+            inserisciFilm(contatore);
         }
 
         function vaiIndietro() {
             --contatore;
             inserisciFilm(contatore);
-        }
+        }*/
+        
         
 
     </script>
