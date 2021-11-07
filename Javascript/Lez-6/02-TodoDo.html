@@ -17,6 +17,36 @@
     <input class="nascondi" type="button" onclick="pulisciLista()" value="Clear">
 
     <script>
+
+        var ul = document.querySelector("ul");
+        console.log(input);
+        console.log(ul);
+
+        function aggiungi() {
+            var testo = document.getElementById("input").value;
+            var li = document.createElement("li");
+            var testo2 = document.createTextNode(testo);
+
+            li.appendChild(testo2);
+            ul.appendChild(li);
+            document.getElementById("input").value = '';
+        }
+
+        function cancella() {
+            
+        }
+
+        function pulisciLista() {
+            var li = document.querySelectorAll("li");
+            if(li.length > 0) {
+                for (var i = 0; i < li.length; i++) {
+                    ul.removeChild(li[i]);
+                }
+            } else {
+                var errore = document.getElementById("feed").innerHTML = "<strong> La lista è già vuota </strong>";
+            }
+
+        }
         //aggiungi nuovo li + carattere X per eliminare il singolo li
         //pulire input di test ad ogni inserimento
         //pulsante per pulire intera lista di cosa da fare solo se esiste qualcosa da fare nella lista
