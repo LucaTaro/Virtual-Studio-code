@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
@@ -14,42 +15,59 @@
 
     </ul>
 
-    <input class="nascondi" type="button" onclick="pulisciLista()" value="Clear">
+    <input class="nascondi" type="button" onclick="pulisciLista()" value="Clean" id="btn">
 
     <script>
 
         var ul = document.querySelector("ul");
-        console.log(input);
-        console.log(ul);
 
         function aggiungi() {
             var testo = document.getElementById("input").value;
-            var li = document.createElement("li");
-            var testo2 = document.createTextNode(testo);
+            if(testo != "") {
+                var li = document.createElement("li");
+                var testo2 = document.createTextNode(testo);
+                li.appendChild(testo2);
+                ul.appendChild(li);
+                
+                var elimina = document.createElement("span");
+                elimina.innerText = " X";
+                elimina.onclick = function() {
+                    li.parentNode.removeChild(li);
+                    check();
+                }
+                
+                li.appendChild(elimina);
 
-            li.appendChild(testo2);
-            ul.appendChild(li);
-            document.getElementById("input").value = '';
-        }
-
-        function cancella() {
-            
+                check();
+                document.getElementById("input").value = '';
+            } else {
+            alert("Tu no avere scritto nulla capo");
+            }
         }
 
         function pulisciLista() {
-            var li = document.querySelectorAll("li");
+            /*var li = document.querySelectorAll("li");
             if(li.length > 0) {
                 for (var i = 0; i < li.length; i++) {
                     ul.removeChild(li[i]);
                 }
             } else {
                 var errore = document.getElementById("feed").innerHTML = "<strong> La lista è già vuota </strong>";
-            }
+            }*/
+            document.getElementById("feed").innerHTML = "";
+            document.getElementById("btn").setAttribute("class", "nascondi");
 
         }
-        //aggiungi nuovo li + carattere X per eliminare il singolo li
-        //pulire input di test ad ogni inserimento
-        //pulsante per pulire intera lista di cosa da fare solo se esiste qualcosa da fare nella lista
+        
+        function check(){
+            var lista = document.getElementsByName("li");
+            if (lista.length != 0) {
+                document.getElementById("btn").setAttribute("class", "");
+            } else {
+                document.getElementById("btn").setAttribute("class", "nascondi")
+            }
+        }
+        
     </script>
     
 </body>
