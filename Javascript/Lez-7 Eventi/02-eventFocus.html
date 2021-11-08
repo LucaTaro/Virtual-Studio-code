@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
@@ -12,13 +13,57 @@
         <label for="nome">Nome:</label>
         <input type="text" name="nome" id="nome">
 
+        <div id="feedback"></div>
+
         <label for="cognome">Cognome:</label>
         <input type="text" name="cognome" id="cognome">
-
+        <br>
         <input type="submit" id="sub" value="Registrati">
     </form>
+
+    <button id="btn">Clicca</button>
+
     <script>
 
+        var nome = document.getElementById("nome");
+        var feed = document.getElementById("feedback");
+
+        /*function controllaNome() {// parte quando sono in blur
+            var nomeUtente = nome.value;
+            if(nomeUtente.length < 5) {
+                feed.innerHTML = "Nome utente troppo corto";
+                feed.setAttribute("class", "arancione");
+            }
+        }*/
+        function controllaNome(minLength) {
+            var nomeUtente = nome.value;
+            if(nomeUtente.length < minLength) {
+                feed.innerHTML = "Name too short";
+                feed.setAttribute("class", "arancione");
+            } else {
+                feed.innerHTML = "";
+            }
+        }
+
+        function suggerisci(){ //parte quand sono in focus
+            feed.innerHTML = "Caro utente utilizza il tuo nome di battesimo";
+            feed.setAttribute("class", "verde");
+        }
+
+        nome.addEventListener("blur", function() {controllaNome(5);}, false);
+        nome.addEventListener("focus", suggerisci, false);
+        
+        //collegare 2 funzioni in 1
+        const primaFunzione = () => console.log("A scemooooooooooooo");
+        const secondaFunzione = () => console.log("A pirlaaaaaaaaaaa");
+
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click", () => {
+            primaFunzione();
+            secondaFunzione();
+        }, false);
+
+        
     </script>
 
 </body>
