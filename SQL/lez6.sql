@@ -57,3 +57,33 @@ values (
     'TV Sony Bravia 85"',
     json_object ("marca", "Sony", "pesokg", "10.1", "schermo", "OLED", "pollici", 85, "uscite", json_array("HDMI 2.0", "USB 3.1", "Ethernet", "Dolby surround"))
 );
+
+select json_extract(specifiche, "$.uscite") from articolo;
+
+select json_extract(specifiche, "$.uscite[2]") from articolo;
+
+select specifiche -> "$.uscite" from articolo;
+
+update articolo
+set specifiche = json_set(/*aggiunge anche campi non esistenti*/
+        specifiche,
+        "$.marca", "Boh",
+        "$.uscite", json_array("hdmi", "scart"),
+        "$.ingressi", json_array("usb", "ethernet"),
+)
+where id = 1;
+
+update articolo
+set specifiche = json_insert (
+        specifiche, "$.uscite[2]", "RGB")/*inserisce l'elemento solo se non è presente, non sovrascrive nulla*/
+where id = 1;
+
+update articolo
+set specifiche = json_replace(
+    specifiche, "$.marca", "Aaiowjvwio")
+where id = 1;
+
+update articolo
+set specifiche = json_remove(
+    specifiche, "$.marca", "Aaiowjvwio", "$.uscite[2]", "RGB")
+where id = 1;
