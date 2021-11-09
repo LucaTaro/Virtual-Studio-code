@@ -85,5 +85,5 @@ where id = 1;
 
 update articolo
 set specifiche = json_remove(
-    specifiche, "$.marca", "Aaiowjvwio", "$.uscite[2]", "RGB")
+    specifiche, "$.marca", "$.uscite[2]")
 where id = 1;
