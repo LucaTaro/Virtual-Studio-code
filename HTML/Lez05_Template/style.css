@@ -1,0 +1,78 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;/*margine sopra e sotto 0/ destra e sinistra auto;*/
+}
+
+                                                /*menù di navigazione*/
+.mainMenu ul{
+    list-style-type: none;
+    display: flex;
+}
+
+#mainHeader {
+    display: flex;
+    flex-flow: row;/*proprietà di deaful che imposta il main axis su row*/
+    align-items: center;/*centra gli oggetti in verticale*/
+    justify-content: space-between;
+}
+
+.mainMenu ul li {/*tutti gli li contenuti da ul che a sua volta sta dentro .mainmenu*/
+    margin-left: 1rem;
+}
+                                                /*hero*/
+
+#hero {
+    margin-bottom: 5rem;
+}
+
+                                                /*intro*/
+#intro {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.introImg, .introText {
+    flex-basis: 50%;
+}
+
+.introImg img {
+    width: 100%;
+}
+
+.introImg {
+    order: 1;
+}
+
+.introText {
+    padding-left: 3rem;
+}
+
+                                                /*gallery*/
+#gallery {
+    margin-bottom: 5rem;
+
+}
+
+.galleryWrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.galleryItem {
+    width: 25%;
+    padding: 1rem;
+}
+
+.galleryItem img {
+    display: block;/*serve per evitare che le immagini abbiano un spazio sotto*/
+}
