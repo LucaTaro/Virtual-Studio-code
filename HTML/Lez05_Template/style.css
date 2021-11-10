@@ -2,6 +2,10 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -75,4 +79,13 @@ img {
 
 .galleryItem img {
     display: block;/*serve per evitare che le immagini abbiano un spazio sotto*/
+}
+
+                                                /*footer*/
+.mainFooter {
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background: darkblue;
+    color: darkgoldenrod;
 }
