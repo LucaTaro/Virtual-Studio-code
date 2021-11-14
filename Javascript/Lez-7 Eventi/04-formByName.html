@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="https://www.example.org" id="mioForm" name="mioForm" method="GET">
+        
+        <input type="text" placeholder="Username"  name="username"><br>
+        <input type="text" placeholder="Email"  name="email"><br>
+        <input type="text" placeholder="Cap" name="cap"><br>
+        <input type="text" placeholder="Codice Fiscale" name="codFisc"><br>
+        <select name="nazione" >
+            <option value="-1" >Scegli Nazionalità</option>
+            <option value="0">ITA</option>
+            <option value="1">USA</option>
+            <option value="2">FRA</option>
+            <option value="3">SPA</option>
+            <option value="4">GER</option>
+        </select><br>
+        <input type="checkbox" name="termini">
+        <label for="termini">Accetta termini e condizioni</label><br>
+        <input type="submit" value="Registrati">
+    </form>
+
+    <div id="feedback"></div>
+
+    <script type="text/javascript">
+
+    var formatoMail = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    var formatoCodFisc = /^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]*$/i;
+
+    var mioForm = document.getElementById('mioForm');
+    var feedback = document.getElementById('feedback');
+    
+    
+    function validate(){
+        //stiamo recuperando i singoli campi attraverso la proprietà name 
+       
+        var avviso = '';
+
+        if(document.mioForm.username.value == ''){
+            avviso += 'Hai dimenticato lo username <br>';
+            event.preventDefault();
+            // username.focus();      
+        }
+
+        if(!document.mioForm.email.value.match(formatoMail) || document.mioForm.email.value == ''){
+            avviso += 'Controlla la mail <br>';
+            event.preventDefault();
+            // email.focus();
+        }
+
+        if(document.mioForm.cap.value == '' || isNaN(document.mioForm.cap.value.trim()) || document.mioForm.cap.value.trim().length != 5){
+            avviso += 'Controlla di aver inserito il CAP corretto <br>';
+            event.preventDefault();
+        }
+
+        if(!document.mioForm.codFisc.value.match(formatoCodFisc) || document.mioForm.codFisc.value == ''){
+            avviso += "Controlla il codice fiscale <br>";
+            event.preventDefault();
+        }
+
+        if(document.mioForm.nazione.value == '-1'){
+            avviso += "Scegli una nazionalità <br>";
+            event.preventDefault()
+        }
+
+        if(!document.mioForm.termini.checked){
+            avviso += "Accetta Termini e Condizioni <br>";
+            event.preventDefault();
+        }
+        
+        feedback.innerHTML = avviso;
+
+    }
+
+    mioForm.addEventListener('submit', validate, false);
+
+    </script>
+
+</body>
+</html>

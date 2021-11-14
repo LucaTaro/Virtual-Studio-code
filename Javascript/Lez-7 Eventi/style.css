@@ -1,7 +1,72 @@
-.verde {
-    color: green;
+body {
+    background-image: url("https://www.teahub.io/photos/full/35-356986_nice-backgrounds-for-twitter..jpg");
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    color: white;
+    width: 25%;
+    margin:0 auto;
+    border: 0.1rem solid lightsalmon;
+    border-collapse: collapse;
 }
 
-.arancione {
-    color: orange;
+form {
+    border: 0.1rem solid orange;
+    text-align: center;
+}
+
+h1 {
+    border-bottom: 0.1rem solid lightsalmon;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+img {
+    width: 10%;
+}
+
+p {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: aqua;
+    word-wrap: break-word;
+}
+
+textarea {
+    resize: none;
+    margin-top: 1rem;
+}
+
+.errorebox {
+    border-color: red;
+}
+
+#caratteriRes {
+    text-align: center;
+}
+
+.errore {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: red;
+}
+
+#feedTweet p {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-top: 0.1rem solid lightpink;
+    text-align: center;
+    
+}
+
+#caratteriRes {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-left: 26rem;
+    margin-right: 5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 1rem;
+    text-align: right;
 }

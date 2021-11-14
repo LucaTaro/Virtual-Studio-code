@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1><img src="img/Twitter-Logo-650x366.png">Benveuto su Twitter</h1>
+    <p>Scrivi il tuo tweet, solo 140 caratteri</p>
+
+    <form id="areaTweet" action="#">
+        <textarea name="messaggio" id="messaggio" width="100px" rows="4"></textarea>
+
+        <div id="caratteriRes">140</div>
+
+        <input type="button" value="Invia tweet">
+
+        <div id="feedTweet">
+
+        </div>
+    </form>
+
+    <script>
+        var messaggio = document.getElementById("messaggio");
+        var rimanenti = document.getElementById("caratteriRes");
+        var tweet = document.getElementById("feedTweet");
+        var mioForm = document.querySelector("input");
+        var h1 = document.getElementsByTagName("h1");
+        var img = document.createElement("img");
+        console.log(h1)
+        h1.a
+
+        function controllo() {
+            var caratteri = messaggio.value.length;
+            console.log(caratteri);
+            if ((140 - caratteri) >= 0 ) {
+                rimanenti.innerHTML = "Rimanenti: " + (140 - caratteri);
+            } else {
+                event.preventDefault();
+                var del = messaggio.value;
+                var del1 = del.slice(0, -1)
+                messaggio.value = del1;
+            }
+        }
+
+        function blocco() {
+            var caratteri = messaggio.value.length;
+            if (caratteri == 0) {
+                event.preventDefault();
+                tweet.innerHTML += "Non è stato scritto nessun messaggio, impossibile pubblicare<br>";
+                tweet.setAttribute("class", "errore");
+            } else {
+                    tweet.innerHTML += "<p>Milo il correttore ha twittato:<br> " + messaggio.value + "</p>";
+                    document.getElementById("messaggio").value = "";
+                    rimanenti.innerHTML = "140";
+                }
+        }
+
+        messaggio.addEventListener("keyup", controllo, false);
+        mioForm.addEventListener("click", blocco, false);
+
+    </script>
+
+</body>
+</html>

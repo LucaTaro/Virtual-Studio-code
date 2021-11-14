@@ -20,15 +20,23 @@
             <option value="3">Spagna</option>
             <option value="4">Francia</option>
         </select><br>
+        <select name="abbonamento" id="abbonamento">
+            <option value="annuale">1 anno a soli 359.99£</option>
+            <option value="mensile">1 mese a soli 1.99£</option>
+        </select><br>
         <input type="checkbox" id="termini">
         <label for="termini">Accetta i termini e condizioni</label><br>
         <input type="submit" value="Registrati">
     </form>
     
     <div id="feedback"></div>
+    <div id="feedPacchetto"></div>
+
     <script>
         var mioForm = document.getElementById("mioForm");
         var feedback = document.getElementById("feedback");
+        var feedPacchetto = document.getElementById("feedPacchetto");
+        var abbonamento = document.getElementById("abbonamento");
 
         function validate() {
             var username = document.getElementById("username");
@@ -36,6 +44,7 @@
             var cap = document.getElementById("cap");
             var cod = document.getElementById("codFisc");
             var nazione = document.getElementById("nazione");
+            var termini = document.getElementById("termini");
             
             if(username.value == "") {
                 feedback.innerHTML +=  "Username vuoto D: <br>";
@@ -46,37 +55,53 @@
 
             var regcod = /^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$/;
             var controllo = cod.value.match(regcod);
-            if(controllo == null) {
-                feedback.innerHTML = "Il formato del codice fiscale non è giusto, controlla D: <br>";
+            if(controllo == null || cod.value == "") {
+                feedback.innerHTML += "Il formato del codice fiscale non è giusto, controlla D: <br>";
                 event.preventDefault();
                 cod.focus();
             }
 
-            var regmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            var regmail = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
             var controllo2 = email.value.match(regmail);
-            if(controllo2 == null) {
-                feedback.innerHTML = "Il formato dell'email non è giusto, controlla D: <br>";
+            if(controllo2 == null || email.value == "") {
+                feedback.innerHTML += "Il formato dell'email non è giusto, controlla D: <br>";
                 event.preventDefault();
                 email.focus();
             }
 
             var regcap = /^[0-9]{5}$/;
             var controllo3 = cap.value.match(regcap);
-            if(controllo3 == null) {
-                feedback.innerHTML = "Il formato del CAP non è giusto, controlla D: <br>";
+            if(controllo3 == null || isNaN(cap.value.trim()) || cap.value == "") {
+                feedback.innerHTML += "Il formato del CAP non è giusto, controlla D: <br>";
                 event.preventDefault();
                 cap.focus();
             }
 
             if(nazione.value == -1) {
-                feedback.innerHTML =  "Non hai scelto la nazionalità D: <br>";
+                feedback.innerHTML +=  "Non hai scelto la nazionalità D: <br>";
                 event.preventDefault();
                 nazione.focus();
             }
 
+            if(!termini.checked) {
+                feedback.innerHTML += "Termini non accettati;"
+                event.preventDefault();
+            }
+
+        }
+
+        function suggPacchetto() {
+            var sceltaAbb = this.options[this.selectedIndex].value;
+
+            if(sceltaAbb == "mensile") {
+                feedPacchetto.innerHTML = "Se acquisti l'abbonamento annuale ci perdi";
+            } else {
+                feedPacchetto.innerHTML = "Pessima scelta";
+            }
         }
 
         mioForm.addEventListener("submit", validate, false);
+        abbonamento.addEventListener("change", suggPacchetto, false);
 
     </script>
 </body>
