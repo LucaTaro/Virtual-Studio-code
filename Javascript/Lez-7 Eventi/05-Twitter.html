@@ -10,13 +10,15 @@
 </head>
 <body>
     
-    <h1><img src="img/Twitter-Logo-650x366.png">Benveuto su Twitter</h1>
+    <h1>Benveuto su Twitter</h1>
     <p>Scrivi il tuo tweet, solo 140 caratteri</p>
 
     <form id="areaTweet" action="#">
         <textarea name="messaggio" id="messaggio" width="100px" rows="4"></textarea>
 
         <div id="caratteriRes">140</div>
+        <div id="ultimoCarattere">Stai digitando A</div>
+        <div id="ultimoCodCarattere">Il codice dell'ultimo carattere è 64</div>
 
         <input type="button" value="Invia tweet">
 
@@ -30,18 +32,29 @@
         var rimanenti = document.getElementById("caratteriRes");
         var tweet = document.getElementById("feedTweet");
         var mioForm = document.querySelector("input");
+        var ultimoC = document.getElementById("ultimoCarattere");
+        var ultimoCC = document.getElementById("ultimoCodCarattere");
+        var h1 = document.querySelector("h1");
+        h1.innerHTML = '<img src="img/Twitter-Logo-650x366.png">Benveuto su Twitter';
         
         function controllo() {
             var caratteri = messaggio.value.length;
-            console.log(caratteri);
             if ((140 - caratteri) >= 0 ) {
+                /*ultimoC.innerHTML = "Stai digitando " + messaggio.value.charAt(caratteri-1);
+                ultimoCC.innerHTML = "Il codice dell'ultimo carattere è " + messaggio.value.charCodeAt(caratteri-1);*/
                 rimanenti.innerHTML = "Rimanenti: " + (140 - caratteri);
             } else {
                 event.preventDefault();
-                var del = messaggio.value;
-                var del1 = del.slice(0, -1)
-                messaggio.value = del1;
+                var del = messaggio.value.slice(0, -1);
+                //var del = messaggio.value.substring(0, 140) metodo alternativo
+                messaggio.value = del;
             }
+        }
+
+        function digitazione(digitazione) {
+            ultimoC.innerHTML = "Stai digitando " + digitazione.data;
+            var ascii = digitazione.data;
+            ultimoCC.innerHTML = "Il codice dell'ultimo carattere è " + ascii.charCodeAt(0);
         }
 
         function blocco() {
@@ -58,6 +71,7 @@
         }
 
         messaggio.addEventListener("keyup", controllo, false);
+        messaggio.addEventListener("input", digitazione, false);
         mioForm.addEventListener("click", blocco, false);
 
     </script>
