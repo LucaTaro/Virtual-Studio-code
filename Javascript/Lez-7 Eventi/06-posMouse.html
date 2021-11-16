@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+
+    <h1>Segui il mouse</h1>
+
+    schermo X <input type="text" name="" id="schermoX">
+    schermo y <input type="text" id="schermoY">
+    <br>
+    pagina X <input type="text" id="paginaX">
+    pagina Y <input type="text" id="paginaY">
+
+    <script>
+        var sx = document.getElementById("schermoX");
+        var sy = document.getElementById("schermoY");
+        var px = document.getElementById("paginaX");
+        var py = document.getElementById("paginaY");
+
+        function mostraPosizione(event) {
+            sx.value = event.screenX;
+            sy.value = event.screenY;
+            px.value = event.screenX;
+            py.value = event.screenY;
+        }
+
+        var elBody = document.getElementById("body");
+        elBody.addEventListener("mousemove", mostraPosizione, false);
+
+    </script>
+    
+</body>
+</html>
