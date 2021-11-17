@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: #666;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.galleryWrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.galleryItem {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .galleryItem {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .galleryItem {
+        width: 25%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .galleryItem {
+        width: 20%;
+    }
+}

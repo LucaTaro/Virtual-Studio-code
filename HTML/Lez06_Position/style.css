@@ -1,0 +1,25 @@
+.container {
+    height: 600px;
+    width: 600px;
+    background-color: #3333ff;
+    position: relative; /*serve per posizione in modo assoluto l'elemento figlio*/
+}
+
+.box {
+    height: 100px;
+    width: 100px;
+    background-color: yellow;
+    
+    /*position: fixed;  basa sulla dimesione del browser esta in quella posizione
+    bottom: 0;*/
+    position: absolute; /*Lo posiziona in modo assoluto rispetto al genitore*/
+    bottom: 0;
+    top: 0;
+}
+
+.boxFisso {
+    background-color: #44dd33;
+    position: fixed;/*resta fisso nel browser anche se scorro*/
+    top: 20px;
+    right: 20px;
+}
