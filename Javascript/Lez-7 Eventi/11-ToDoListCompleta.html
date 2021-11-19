@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do list</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+    <input type="text" id="item"><br>
+    <input type="date" name="data" id="data"><br>
+    <button id="btn">Inserisci</button>
+
+    <div id="lista">
+        <!--Cose da fare che con 2 pulsati (modifica, elimina)-->
+    </div>
+
+    <button class="mt50" id="btnStampa">Crea versione stampabile</button><br>
+    <div id="feedback">
+        <!-- Qui verrà mostrata la versione json della lista e inviata alla local storage-->
+
+    </div>
+
+    <button class="mt50" id="btnRecupera">Recupera vecchia versione</button>
+    <div id="vecchiavers">
+        <!-- Solo ne caso in cui c'è qualcosa salvato nella local o session storage stampo gli item in formato json-->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var item = document.getElementById("item");
+        var date = document.getElementById("data");
+        var lista = document.getElementById("lista");
+        var ul = document.createElement("ul");
+        lista.appendChild(ul);
+
+        function stampa() {
+            var li = document.createElement("li");
+            var todo = document.createTextNode(item.value + " " + date.value  + " ");
+            var modifica = document.createElement("button");
+            var modTxt = document.createTextNode("Modifica");
+            modifica.appendChild(modTxt);
+            var elimina = document.createElement("button");
+            modTxt = document.createTextNode("Elimina");
+            elimina.appendChild(modTxt);
+            li.appendChild(todo);
+            li.appendChild(modifica);
+            li.appendChild(elimina);
+            li.setAttribute("class", "animate__animated animate__lightSpeedInLeft");
+            lista.appendChild(li);
+
+            elimina.onclick = function() {
+                li.parentNode.removeChild
+            }
+            
+        }
+
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click", stampa, false);
+
+    </script>
+    
+</body>
+</html>
