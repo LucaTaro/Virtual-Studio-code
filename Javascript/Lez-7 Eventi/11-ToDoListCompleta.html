@@ -36,6 +36,7 @@
         var list = document.getElementById("lista");
         var ul = document.createElement("ul");
         list.appendChild(ul);
+        var arrayid = [];
 
         function lista(){
             var li = document.createElement('li')
@@ -98,7 +99,9 @@
                 feed.innerHTML += "Item: " + json[i].item + "<br>" + "Data: " + json[i].data + "<br><br>";
             }
             if(Modernizr.sessionstorage) {
-                sessionStorage.setItem("Sessione", JSON.stringify(json));
+                id = "Sessione" + Math.random();
+                arrayid.push(id);
+                sessionStorage.setItem(id, JSON.stringify(json));
             }
             document.getElementById("lista").innerHTML = "";
         }
@@ -106,9 +109,8 @@
         function recupera() {
             document.getElementById("vecchiaVers").innerHTML = "";
             if(Modernizr.sessionstorage) {
-                var obj = JSON.parse(sessionStorage.getItem("Sessione"));
+                var obj = JSON.parse(sessionStorage.getItem(arrayid[arrayid.length-2]));
             }
-            console.log(obj);
             for(var i = 0; i < obj.length; i++) {
                 document.getElementById("vecchiaVers").innerHTML += "Item: " + obj[i].item + "<br>" + "Data: " + obj[i].data + "<br><br>";
             }
