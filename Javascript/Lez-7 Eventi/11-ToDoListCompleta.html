@@ -44,6 +44,8 @@
             var toDoDate = date.value
             var toDoTxt = item.value
 
+            if ((toDoDate) || (toDoTxt)) {
+            document.getElementById("lista").innerHTML = "";
             var toDoTxtNode = document.createTextNode(toDoTxt)
             var toDoDateNode = document.createTextNode(toDoDate)
 
@@ -84,26 +86,36 @@
                 document.getElementById("data").value = todo2;
                 li.parentNode.removeChild(li);
             }
+            } else {
+                event.preventDefault();
+                alert("Nessun elemento selezionato, riprova")
+            }
             
         }
 
         function stampa() {
             var list = document.querySelectorAll("span");
             var feed = document.getElementById("feedback");
-            feed.innerHTML = "";
-            var json = [];
-            for(var i = 0; i < list.length; i++) {
-                json.push({item: list[i].innerText, data: list[++i].innerText});
+            console.log(list);
+            if (list.length > 0) {
+                feed.innerHTML = "";
+                var json = [];
+                for(var i = 0; i < list.length; i++) {
+                    json.push({item: list[i].innerText, data: list[++i].innerText});
+                }
+                for(var i = 0; i < json.length; i++) {
+                    feed.innerHTML += "Item: " + json[i].item + "<br>" + "Data: " + json[i].data + "<br><br>";
+                }
+                if(Modernizr.sessionstorage) {
+                    id = "Sessione" + Math.random();
+                    arrayid.push(id);
+                    sessionStorage.setItem(id, JSON.stringify(json));
+                }
+                document.getElementById("lista").innerHTML = "";
+            } else {
+                event.preventDefault();
+                document.getElementById("lista").innerHTML = "Nessuna lista da stampare";
             }
-            for(var i = 0; i < json.length; i++) {
-                feed.innerHTML += "Item: " + json[i].item + "<br>" + "Data: " + json[i].data + "<br><br>";
-            }
-            if(Modernizr.sessionstorage) {
-                id = "Sessione" + Math.random();
-                arrayid.push(id);
-                sessionStorage.setItem(id, JSON.stringify(json));
-            }
-            document.getElementById("lista").innerHTML = "";
         }
 
         function recupera() {
