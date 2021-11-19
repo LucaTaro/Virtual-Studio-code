@@ -111,8 +111,13 @@
             if(Modernizr.sessionstorage) {
                 var obj = JSON.parse(sessionStorage.getItem(arrayid[arrayid.length-2]));
             }
-            for(var i = 0; i < obj.length; i++) {
-                document.getElementById("vecchiaVers").innerHTML += "Item: " + obj[i].item + "<br>" + "Data: " + obj[i].data + "<br><br>";
+            if(obj) {
+                document.getElementById("vecchiaVers").innerHTML = "";
+                for(var i = 0; i < obj.length; i++) {
+                    document.getElementById("vecchiaVers").innerHTML += "Item: " + obj[i].item + "<br>" + "Data: " + obj[i].data + "<br><br>";
+                }
+            } else {
+                document.getElementById("vecchiaVers").innerHTML = "Nessun elemento da recuperare";
             }
         }
 
