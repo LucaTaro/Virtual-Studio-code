@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="" id="registrazione">
+        <input type="text" name="username" id="username" placeholder="Username">
+        <input type="text" name="commento" id="commento" placeholder="Commento"><br>
+        <input type="sublim" value="Salva">
+    </form>
+
+    <div id="demo"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+
+        if(Modernizr.localstorage) {
+            var nomeUser = "Taro";
+            var token = "VAIUOMO!";
+
+            localStorage.setItem("Session1", nomeUser + token);
+            document.getElementById("div").innerHTML = localStorage.getItem("Session1", nomeUser + token);
+        }
+
+        if(Modernizr.localstorage) {
+            var username = document.getElementById("username");
+            var commento = document.getElementById("commento");
+            var form = document.getElementById("registrazione");
+
+            username.addEventListener("input", function() {
+                localStorage.setItem("username", username.value)
+            });
+
+            commento.addEventListener("input", function() {
+                localStorage.setItem("commento", commento.value)
+            });
+
+            form.addEventListener("submit", function(){
+                document.getElementById("demo").innerHTML = "Username: " + localStorage.setItem("username", username) + "<br> Commento: " + localStorage.setItem("commento", commento);
+            });
+            
+        }
+        
+        var utente = {
+            nome: "Luca",
+            cognome: "Taro"
+        };
+
+        if(Modernizr.localstorage) {
+            sessionStorage.setItem("utente", JSON.stringify(utente));
+        }
+        
+        </script>
+    
+</body>
+</html>
