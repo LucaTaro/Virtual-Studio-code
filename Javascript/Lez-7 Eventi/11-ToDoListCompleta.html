@@ -10,23 +10,23 @@
 </head>
 <body>
 
-    <input type="text" id="item"><br>
-    <input type="date" name="data" id="data"><br>
-    <button id="btn">Inserisci</button>
-
-    <div id="lista">
-        <!--Cose da fare che con 2 pulsati (modifica, elimina)-->
-    </div>
-
-    <button class="mt50" id="btnStampa">Crea versione stampabile</button><br>
-    <div id="feedback">
-        <!-- Qui verrà mostrata la versione json della lista e inviata alla local storage-->
-
-    </div>
-
-    <button class="mt50" id="btnRecupera">Recupera vecchia versione</button>
-    <div id="vecchiaVers">
-        <!-- Solo ne caso in cui c'è qualcosa salvato nella local o session storage stampo gli item in formato json-->
+    <div class="wrapper">
+        <div class="input">
+            <input type="text" id="item" placeholder="Inserisci la cosa da fare"><br>
+            <input type="date" name="data" id="data"><br>
+        </div>
+        <button id="btn">Inserisci</button>
+        <div id="lista">
+            <!--Cose da fare che con 2 pulsati (modifica, elimina)-->
+        </div>
+        <button class="mt50" id="btnStampa">Crea versione stampabile</button><br>
+        <div id="feedback">
+            <!-- Qui verrà mostrata la versione json della lista e inviata alla local storage-->
+        </div>
+        <button class="mt50" id="btnRecupera">Recupera vecchia versione</button>
+        <div id="vecchiaVers">
+            <!-- Solo ne caso in cui c'è qualcosa salvato nella local o session storage stampo gli item in formato json-->
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -65,7 +65,6 @@
             li.appendChild(modifica)
             li.appendChild(elimina)
             li.setAttribute('class','animate__animated animate__lightSpeedInLeft')
-            li.setAttribute('id', 'li')
             list.appendChild(li)
 
             document.getElementById("item").value = ""
@@ -77,7 +76,6 @@
                 {
                     li.parentNode.removeChild(li);
                 },1500)
-               
             }
 
             modifica.onclick = function() {
@@ -96,20 +94,23 @@
             for(var i = 0; i < list.length; i++) {
                 json.push({item: list[i].innerText, data: list[++i].innerText});
             }
-            for(var i = 0; i < list.length; i++) {
-                feed.innerHTML += "Item: " + json[i].item + "<br>" + "Data: " + json[i].data + "<br>";
+            for(var i = 0; i < json.length; i++) {
+                feed.innerHTML += "Item: " + json[i].item + "<br>" + "Data: " + json[i].data + "<br><br>";
             }
             if(Modernizr.sessionstorage) {
                 sessionStorage.setItem("Sessione", JSON.stringify(json));
             }
+            document.getElementById("lista").innerHTML = "";
         }
 
         function recupera() {
+            document.getElementById("vecchiaVers").innerHTML = "";
             if(Modernizr.sessionstorage) {
-                var obj = JSON.parse(sessionStorage.getItem('Sessione'));
+                var obj = JSON.parse(sessionStorage.getItem("Sessione"));
             }
+            console.log(obj);
             for(var i = 0; i < obj.length; i++) {
-                document.getElementById("vecchiaVers").innerHTML += "Item: " + obj[i].item + "<br>" + "Data: " + obj[i].data + "<br>";
+                document.getElementById("vecchiaVers").innerHTML += "Item: " + obj[i].item + "<br>" + "Data: " + obj[i].data + "<br><br>";
             }
         }
 
