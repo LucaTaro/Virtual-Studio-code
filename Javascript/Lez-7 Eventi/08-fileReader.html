@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="file" accept="text/plain" id="input"> <br>
+    <textarea name="contenuto" id="contenuto" cols="80" rows="30"></textarea><br>
+
+    <input type="file" accept="img/*" class="mt50" id="inputImg"><br>
+    <img id="imgOut"><br>
+
+    <textarea name="txtEsempio" id="txtEsempio" class="mt50" cols="20" rows="6"></textarea><br>
+    <button type="button" id="btnSalva">Salva</button><br>
+
+    <script>
+        function openfile(event) {
+            var inputTxt = event.target;
+            var lettore = new FileReader();
+            lettore.onload = function () {
+                var text = lettore.result;
+                document.getElementById("contenuto").innerHTML = text;
+            }
+            lettore.readAsText(inputTxt.files[0]);
+        }
+        var input = document.getElementById("input");
+        input.addEventListener("change", openfile, false);
+
+        function openImg(event) {
+            var inputImg = event.target;
+            var lettore = new FileReader();
+            lettore.onload = function () {
+                var img = lettore.result;
+                document.getElementById("imgOut").src = img;
+            }
+            lettore.readAsDataURL(inputImg.files[0]);
+        }
+        var inputImg = document.getElementById("inputImg");
+        inputImg.addEventListener("change", openImg, false);
+
+        function salva() {
+            if("Blob" in window) {
+                var nomeFile = prompt("Inserisci il nome del file", "SenzaTitolo.txt");
+                if(nomeFile) {
+                    var txtDaS = document.getElementById("txtEsempio").value;
+                    var txtBlob = new Blob([txtDaS], {type: "txt/plain"});
+                    if("msSaveOrOpenBlob" in navigator) {
+                        navigator.msSaveOrOpenBlob(txtBlob, nomeFile);
+                    } else {
+                        var linkDownload = document.createElement("a");
+                        linkDownload.download = nomeFile;
+                        linkDownload.href = window.webkitURL.createObjectURL(txtBlob);
+                        linkDownload.click();
+                    }
+                }
+            } else {
+                alert("Cambio sto browser demme'");
+            }
+        }
+        var btnSalva = document.getElementById("btnSalva");
+        btnSalva.addEventListener("click", salva, false);
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Inserisci un numero tra 5 e 20</p>
+    <input type="text" name="" id="inputUser">
+    <button type="button" id="btn">Testa input</button>
+
+    <div id="feed"></div>
+
+    <script>
+        function controlla() {
+            var input = document.getElementById("inputUser").value;
+            var feed = document.getElementById("feed");
+
+            try {
+                if(input == "") {
+                    throw "Il campo è vuoto";
+                }
+                if(isNaN(input)) {
+                    throw "Non è un numero";
+                }
+                if((input <= 5) || (input >= 20)) throw "Numero non compreso"
+            } catch (err){
+                feed.innerHTML = "Errore: " + err;
+            } finally {
+                document.getElementById("input").value = "";
+            }
+        }
+
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click", controlla, false);
+
+    </script>
+    
+</body>
+</html>
