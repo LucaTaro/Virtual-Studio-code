@@ -25,7 +25,7 @@
     </div>
 
     <button class="mt50" id="btnRecupera">Recupera vecchia versione</button>
-    <div id="vecchiavers">
+    <div id="vecchiaVers">
         <!-- Solo ne caso in cui c'è qualcosa salvato nella local o session storage stampo gli item in formato json-->
     </div>
 
@@ -33,33 +33,94 @@
     <script>
         var item = document.getElementById("item");
         var date = document.getElementById("data");
-        var lista = document.getElementById("lista");
+        var list = document.getElementById("lista");
         var ul = document.createElement("ul");
-        lista.appendChild(ul);
+        list.appendChild(ul);
 
-        function stampa() {
-            var li = document.createElement("li");
-            var todo = document.createTextNode(item.value + " " + date.value  + " ");
-            var modifica = document.createElement("button");
-            var modTxt = document.createTextNode("Modifica");
-            modifica.appendChild(modTxt);
-            var elimina = document.createElement("button");
-            modTxt = document.createTextNode("Elimina");
-            elimina.appendChild(modTxt);
-            li.appendChild(todo);
-            li.appendChild(modifica);
-            li.appendChild(elimina);
-            li.setAttribute("class", "animate__animated animate__lightSpeedInLeft");
-            lista.appendChild(li);
+        function lista(){
+            var li = document.createElement('li')
 
-            elimina.onclick = function() {
-                li.parentNode.removeChild
+            var toDoDate = date.value
+            var toDoTxt = item.value
+
+            var toDoTxtNode = document.createTextNode(toDoTxt)
+            var toDoDateNode = document.createTextNode(toDoDate)
+
+            var toDoTxtSpan = document.createElement('span')
+            var toDoDateSpan = document.createElement('span')
+
+
+            var modTxt = document.createTextNode('Modifica')
+            var modifica = document.createElement('button')
+            modifica.appendChild(modTxt)
+
+            var elimTxt = document.createTextNode('Elimina')
+            var elimina = document.createElement('button')
+            elimina.appendChild(elimTxt)
+
+            toDoTxtSpan.appendChild(toDoTxtNode)
+            toDoDateSpan.appendChild(toDoDateNode)
+            li.appendChild(toDoTxtSpan)
+            li.appendChild(toDoDateSpan)
+            li.appendChild(modifica)
+            li.appendChild(elimina)
+            li.setAttribute('class','animate__animated animate__lightSpeedInLeft')
+            li.setAttribute('id', 'li')
+            list.appendChild(li)
+
+            document.getElementById("item").value = ""
+            document.getElementById("data").value = null
+
+            elimina.onclick = function(){
+                li.setAttribute("class", "animate__animated animate__lightSpeedOutRight");
+                setInterval(()=>
+                {
+                    li.parentNode.removeChild(li);
+                },1500)
+               
+            }
+
+            modifica.onclick = function() {
+                document.getElementById("item").value = todo1;
+                document.getElementById("data").value = todo2;
+                li.parentNode.removeChild(li);
             }
             
         }
 
+        function stampa() {
+            var list = document.querySelectorAll("span");
+            var feed = document.getElementById("feedback");
+            feed.innerHTML = "";
+            var json = [];
+            for(var i = 0; i < list.length; i++) {
+                json.push({item: list[i].innerText, data: list[++i].innerText});
+            }
+            for(var i = 0; i < list.length; i++) {
+                feed.innerHTML += "Item: " + json[i].item + "<br>" + "Data: " + json[i].data + "<br>";
+            }
+            if(Modernizr.sessionstorage) {
+                sessionStorage.setItem("Sessione", JSON.stringify(json));
+            }
+        }
+
+        function recupera() {
+            if(Modernizr.sessionstorage) {
+                var obj = JSON.parse(sessionStorage.getItem('Sessione'));
+            }
+            for(var i = 0; i < obj.length; i++) {
+                document.getElementById("vecchiaVers").innerHTML += "Item: " + obj[i].item + "<br>" + "Data: " + obj[i].data + "<br>";
+            }
+        }
+
         var btn = document.getElementById("btn");
-        btn.addEventListener("click", stampa, false);
+        btn.addEventListener("click", lista, false);
+
+        var btnStampa = document.getElementById("btnStampa");
+        btnStampa.addEventListener("click", stampa, false);
+
+        var btnRecupera = document.getElementById("btnRecupera");
+        btnRecupera.addEventListener("click", recupera, false);
 
     </script>
     

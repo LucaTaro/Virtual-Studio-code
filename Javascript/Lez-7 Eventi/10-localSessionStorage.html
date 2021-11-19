@@ -9,53 +9,71 @@
 <body>
 
     <form action="" id="registrazione">
-        <input type="text" name="username" id="username" placeholder="Username">
+        <input type="text" name="username" id="username" placeholder="Username"><br>
         <input type="text" name="commento" id="commento" placeholder="Commento"><br>
-        <input type="sublim" value="Salva">
+        <input type="submit" value="Salva">
     </form>
 
     <div id="demo"></div>
+    <div id="feed"></div>
 
+    <!-- MODERNIZR -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
+    <script type="text/javascript">
 
-        if(Modernizr.localstorage) {
-            var nomeUser = "Taro";
-            var token = "VAIUOMO!";
-
-            localStorage.setItem("Session1", nomeUser + token);
-            document.getElementById("div").innerHTML = localStorage.getItem("Session1", nomeUser + token);
-        }
-
-        if(Modernizr.localstorage) {
-            var username = document.getElementById("username");
-            var commento = document.getElementById("commento");
-            var form = document.getElementById("registrazione");
-
-            username.addEventListener("input", function() {
-                localStorage.setItem("username", username.value)
-            });
-
-            commento.addEventListener("input", function() {
-                localStorage.setItem("commento", commento.value)
-            });
-
-            form.addEventListener("submit", function(){
-                document.getElementById("demo").innerHTML = "Username: " + localStorage.setItem("username", username) + "<br> Commento: " + localStorage.setItem("commento", commento);
-            });
+        // if(Modernizr.localstorage){
+        //     var nomeUser = "Dario";
+        //     var Token = '1234567';
             
-        }
-        
-        var utente = {
-            nome: "Luca",
-            cognome: "Taro"
-        };
+        //     var user = nomeUser+Token
 
-        if(Modernizr.localstorage) {
-            sessionStorage.setItem("utente", JSON.stringify(utente));
+        //     localStorage.setItem('Utenza 1', user)
+        //     document.getElementById('demo').innerHTML = localStorage.getItem('Utenza 1')
+        // }
+
+        if(Modernizr.localstorage){
+            var username = document.getElementById('username');
+            var commento = document.getElementById('commento');
+            var form = document.getElementById('registrazione');
+
+            // username.value = localStorage.getItem('username');
+            // commento.value = localStorage.getItem('commento');
+
+            username.addEventListener('input', function(){
+                localStorage.setItem('username', username.value);
+            }, false);
+
+            commento.addEventListener('input', function(){
+                localStorage.setItem('commento', commento.value);
+            }, false);
+
+            form.addEventListener('submit', function(){
+                var nomeUtente = localStorage.getItem('username');
+                var commentoUser = localStorage.getItem('commento');
+                document.getElementById('demo').innerHTML = 'Username: ' + nomeUtente 
+                + '<br> Commento: ' + commentoUser; 
+                event.preventDefault()
+            })
         }
-        
-        </script>
+
+        //RAW Data dati grezzi 
+        var utente = {
+            nome: "Dario",
+            cognome: "Mennillo"
+        }
     
+        if(Modernizr.sessionstorage){
+            sessionStorage.setItem('utente', JSON.stringify(utente));
+
+            // document.getElementById('feed').innerHTML = sessionStorage.getItem('utente')
+            var utenteOBJ = JSON.parse(sessionStorage.getItem('utente'));
+
+            console.log(utenteOBJ);
+
+            document.getElementById('feed').innerHTML = 'Nome: ' + utenteOBJ.nome 
+            + "Cognome: " + utenteOBJ.cognome 
+
+        }
+    </script>
 </body>
 </html>
