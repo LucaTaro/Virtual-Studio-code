@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do list</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style1.css">
 </head>
 <body>
@@ -45,47 +46,47 @@
             var toDoTxt = item.value
 
             if ((toDoDate) || (toDoTxt)) {
-            document.getElementById("lista").innerHTML = "";
-            var toDoTxtNode = document.createTextNode(toDoTxt)
-            var toDoDateNode = document.createTextNode(toDoDate)
+            //document.getElementById("lista").innerHTML = "";
+                var toDoTxtNode = document.createTextNode(toDoTxt)
+                var toDoDateNode = document.createTextNode(toDoDate)
 
-            var toDoTxtSpan = document.createElement('span')
-            var toDoDateSpan = document.createElement('span')
+                var toDoTxtSpan = document.createElement('span')
+                var toDoDateSpan = document.createElement('span')
 
 
-            var modTxt = document.createTextNode('Modifica')
-            var modifica = document.createElement('button')
-            modifica.appendChild(modTxt)
+                var modTxt = document.createTextNode('Modifica')
+                var modifica = document.createElement('button')
+                modifica.appendChild(modTxt)
 
-            var elimTxt = document.createTextNode('Elimina')
-            var elimina = document.createElement('button')
-            elimina.appendChild(elimTxt)
+                var elimTxt = document.createTextNode('Elimina')
+                var elimina = document.createElement('button')
+                elimina.appendChild(elimTxt)
 
-            toDoTxtSpan.appendChild(toDoTxtNode)
-            toDoDateSpan.appendChild(toDoDateNode)
-            li.appendChild(toDoTxtSpan)
-            li.appendChild(toDoDateSpan)
-            li.appendChild(modifica)
-            li.appendChild(elimina)
-            li.setAttribute('class','animate__animated animate__lightSpeedInLeft')
-            list.appendChild(li)
+                toDoTxtSpan.appendChild(toDoTxtNode)
+                toDoDateSpan.appendChild(toDoDateNode)
+                li.appendChild(toDoTxtSpan)
+                li.appendChild(toDoDateSpan)
+                li.appendChild(modifica)
+                li.appendChild(elimina)
+                li.setAttribute('class','animate__animated animate__lightSpeedInLeft')
+                list.appendChild(li)
 
-            document.getElementById("item").value = ""
-            document.getElementById("data").value = null
+                document.getElementById("item").value = ""
+                document.getElementById("data").value = null
 
-            elimina.onclick = function(){
-                li.setAttribute("class", "animate__animated animate__lightSpeedOutRight");
-                setInterval(()=>
-                {
+                elimina.onclick = function(){
+                    li.setAttribute("class", "animate__animated animate__lightSpeedOutRight");
+                    setInterval(()=>
+                    {
+                        li.parentNode.removeChild(li);
+                    },1500)
+                }
+
+                modifica.onclick = function() {
+                    document.getElementById("item").value = todo1;
+                    document.getElementById("data").value = todo2;
                     li.parentNode.removeChild(li);
-                },1500)
-            }
-
-            modifica.onclick = function() {
-                document.getElementById("item").value = todo1;
-                document.getElementById("data").value = todo2;
-                li.parentNode.removeChild(li);
-            }
+                }
             } else {
                 event.preventDefault();
                 alert("Nessun elemento selezionato, riprova")
@@ -96,7 +97,6 @@
         function stampa() {
             var list = document.querySelectorAll("span");
             var feed = document.getElementById("feedback");
-            console.log(list);
             if (list.length > 0) {
                 feed.innerHTML = "";
                 var json = [];
@@ -104,29 +104,52 @@
                     json.push({item: list[i].innerText, data: list[++i].innerText});
                 }
                 for(var i = 0; i < json.length; i++) {
-                    feed.innerHTML += "Item: " + json[i].item + "<br>" + "Data: " + json[i].data + "<br><br>";
+                    feed.innerHTML += "Da fare: " + json[i].item + "<br>" + "Data: " + json[i].data + "<br><br>";
                 }
+
                 if(Modernizr.sessionstorage) {
-                    id = "Sessione" + Math.random();
-                    arrayid.push(id);
-                    sessionStorage.setItem(id, JSON.stringify(json));
+                    //id = "Sessione" + Math.random();
+                    //arrayid.push(id);
+                    sessionStorage.setItem("Sessione", JSON.stringify(json));
                 }
-                document.getElementById("lista").innerHTML = "";
+                //document.getElementById("lista").innerHTML = "";
             } else {
                 event.preventDefault();
-                document.getElementById("lista").innerHTML = "Nessuna lista da stampare";
+                document.getElementById("feedback").innerHTML = "Nessuna lista da stampare";
             }
         }
 
         function recupera() {
             document.getElementById("vecchiaVers").innerHTML = "";
             if(Modernizr.sessionstorage) {
-                var obj = JSON.parse(sessionStorage.getItem(arrayid[arrayid.length-2]));
+                var obj = JSON.parse(sessionStorage.getItem("Sessione"));
+                //var obj = JSON.parse(sessionStorage.getItem(arrayid[arrayid.lenght-2]));
             }
-            if(obj) {
+            if(obj) {/*VECCHIA VERSIONE
                 document.getElementById("vecchiaVers").innerHTML = "";
                 for(var i = 0; i < obj.length; i++) {
-                    document.getElementById("vecchiaVers").innerHTML += "Item: " + obj[i].item + "<br>" + "Data: " + obj[i].data + "<br><br>";
+                    //document.getElementById("vecchiaVers").innerHTML += "Item: " + obj[i].item + "<br>" + "Data: " + obj[i].data + "<br><br>";
+                    document.getElementById("vecchiaVers").innerHTML += JSON.stringify(obj);
+                }*/
+                var jsonTxt = document.createTextNode('Versione JSON')
+                var json = document.createElement('button')
+                json.appendChild(jsonTxt)
+
+                var txtTxt = document.createTextNode('Versione Stampabile')
+                var txt = document.createElement('button')
+                txt.appendChild(txtTxt);
+
+                document.getElementById("vecchiaVers").appendChild(json);
+                document.getElementById("vecchiaVers").appendChild(txt);
+
+                json.onclick = function() {
+                    document.getElementById("vecchiaVers").innerHTML += "<br>" + JSON.stringify(obj);
+                }
+
+                txt.onclick = function() {
+                    for(var i = 0; i < obj.length; i++) {
+                        document.getElementById("vecchiaVers").innerHTML += "<br>Da fare: " + obj[i].item + "<br>" + "Data: " + obj[i].data + "<br><br>";
+                    }
                 }
             } else {
                 document.getElementById("vecchiaVers").innerHTML = "Nessun elemento da recuperare";
