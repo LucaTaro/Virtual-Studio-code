@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do list</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style1.css">
 </head>
@@ -37,15 +38,16 @@
         var list = document.getElementById("lista");
         var ul = document.createElement("ul");
         list.appendChild(ul);
-        var arrayid = [];
+        //var arrayid = [];
 
         function lista(){
+            inserisci(item.value, data.value);
+        }
+
+        function inserisci(toDoTxt, toDoDate){
             var li = document.createElement('li')
 
-            var toDoDate = date.value
-            var toDoTxt = item.value
-
-            if ((toDoDate) || (toDoTxt)) {
+            if ((toDoDate) && (toDoTxt)) {
             //document.getElementById("lista").innerHTML = "";
                 var toDoTxtNode = document.createTextNode(toDoTxt)
                 var toDoDateNode = document.createTextNode(toDoDate)
@@ -53,14 +55,15 @@
                 var toDoTxtSpan = document.createElement('span')
                 var toDoDateSpan = document.createElement('span')
 
-
-                var modTxt = document.createTextNode('Modifica')
+                var modTxt = document.createTextNode('')
                 var modifica = document.createElement('button')
                 modifica.appendChild(modTxt)
+                modifica.setAttribute("class", "far fa-edit");
 
-                var elimTxt = document.createTextNode('Elimina')
+                var elimTxt = document.createTextNode('');
                 var elimina = document.createElement('button')
                 elimina.appendChild(elimTxt)
+                elimina.setAttribute("class", "fas fa-trash-alt")
 
                 toDoTxtSpan.appendChild(toDoTxtNode)
                 toDoDateSpan.appendChild(toDoDateNode)
@@ -76,15 +79,15 @@
 
                 elimina.onclick = function(){
                     li.setAttribute("class", "animate__animated animate__lightSpeedOutRight");
-                    setInterval(()=>
+                    setTimeout(()=>
                     {
                         li.parentNode.removeChild(li);
                     },1500)
                 }
 
                 modifica.onclick = function() {
-                    document.getElementById("item").value = todo1;
-                    document.getElementById("data").value = todo2;
+                    document.getElementById("item").value = toDoTxt;
+                    document.getElementById("data").value = toDoDate;
                     li.parentNode.removeChild(li);
                 }
             } else {
@@ -104,7 +107,8 @@
                     json.push({item: list[i].innerText, data: list[++i].innerText});
                 }
                 for(var i = 0; i < json.length; i++) {
-                    feed.innerHTML += "Da fare: " + json[i].item + "<br>" + "Data: " + json[i].data + "<br><br>";
+                    //feed.innerHTML += "Da fare: " + json[i].item + "<br>" + "Data: " + json[i].data + "<br><br>";
+                    feed.innerHTML = JSON.stringify(json);
                 }
 
                 if(Modernizr.sessionstorage) {
@@ -131,6 +135,10 @@
                     //document.getElementById("vecchiaVers").innerHTML += "Item: " + obj[i].item + "<br>" + "Data: " + obj[i].data + "<br><br>";
                     document.getElementById("vecchiaVers").innerHTML += JSON.stringify(obj);
                 }*/
+                if(document.querySelector(".hidden")) {
+                    document.querySelector(".hidden").classList.remove("hidden");
+                }
+                
                 var jsonTxt = document.createTextNode('Versione JSON')
                 var json = document.createElement('button')
                 json.appendChild(jsonTxt)
@@ -154,16 +162,50 @@
             } else {
                 document.getElementById("vecchiaVers").innerHTML = "Nessun elemento da recuperare";
             }
+
+        }
+
+        function stampaVecchia() {
+            var obj = JSON.parse(sessionStorage.getItem("Sessione"));
+            document.getElementById("lista").innerHTML = "";
+            for(var i = 0; i < obj.length; i++) {
+                inserisci(obj[i].item, obj[i].data)
+            }
+        }
+
+        function ordinaLista() {
+            var obj = JSON.parse(sessionStorage.getItem("Sessione"));
+            obj.sort(function (a,b) {
+                var dataA = new Date(a.data), dataB = new Date(b.data);
+                return dataA - dataB
+            })
+            for(var i = 0; i < obj.length; i++) {
+                inserisci(obj[i].item, obj[i].data)
+            }
+
         }
 
         var btn = document.getElementById("btn");
         btn.addEventListener("click", lista, false);
+
+        var dataTxt = document.createTextNode('Ordina per data');
+        var ordina = document.createElement('button');
+        ordina.appendChild(dataTxt)
+        document.querySelector(".wrapper").appendChild(ordina);
+        ordina.addEventListener("click", ordinaLista, false);
 
         var btnStampa = document.getElementById("btnStampa");
         btnStampa.addEventListener("click", stampa, false);
 
         var btnRecupera = document.getElementById("btnRecupera");
         btnRecupera.addEventListener("click", recupera, false);
+
+        var btnVecchiaList = document.createElement("button");
+        var btnVecchiaListTxt = document.createTextNode("Modifica vecchia versione");
+        btnVecchiaList.appendChild(btnVecchiaListTxt);
+        document.querySelector(".wrapper").appendChild(btnVecchiaList);
+        btnVecchiaList.setAttribute("class", "hidden");
+        btnVecchiaList.addEventListener("click", stampaVecchia, false);
 
     </script>
     
