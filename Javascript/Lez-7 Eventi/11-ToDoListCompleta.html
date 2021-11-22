@@ -16,8 +16,6 @@
     <link rel="stylesheet" href="style1.css">
 </head>
 <body>
-    <h1>TO DO LIST</h1>
-    <h2>Cosa da fare</h2>
     <div class="wrapper">
         <div class="input">
             <input type="text" id="item" placeholder="Inserisci la cosa da fare"><br>
@@ -35,7 +33,6 @@
         <div id="vecchiaVers">
             <!-- Solo ne caso in cui c'è qualcosa salvato nella local o session storage stampo gli item in formato json-->
         </div>
-        <footer id="footer">Copyright © 2021 Gruppo_3 Inc. Tutti i diritti riservati ai proprietari: Alessandro, Andrea, Joseph, Luca e Riccardo</footer>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -210,10 +207,26 @@
         btnVecchiaList.setAttribute("class", "hidden");
         btnVecchiaList.addEventListener("click", stampaVecchia, false);
 
+        var h1 = document.createElement('h1')
+        var h1Txt = document.createTextNode("TO DO LIST");
+        h1.appendChild(h1Txt);
+        document.body.appendChild(h1)
+
         var header = document.createElement('header')
         header.setAttribute('id','header')
         document.querySelector('body').prepend(header)
         header.appendChild(document.querySelector('h1'))
+
+        var h2 = document.createElement('h2')
+        var h2Txt = document.createTextNode("Cosa da fare");
+        h2.appendChild(h2Txt);
+        document.body.insertBefore(h2, document.querySelector(".wrapper", h2))
+
+        var footer = document.createElement('footer')
+        var footerTxt = document.createTextNode("Copyright © 2021 Gruppo_3 Inc. Tutti i diritti riservati ai proprietari: Alessandro, Andrea, Joseph, Luca e Riccardo");
+        footer.appendChild(footerTxt);
+        footer.setAttribute('id','footer')
+        document.querySelector('body').appendChild(footer)
 
     </script>
     
