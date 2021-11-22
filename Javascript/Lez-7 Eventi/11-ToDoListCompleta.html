@@ -109,6 +109,7 @@
                 for(var i = 0; i < json.length; i++) {
                     feed.innerHTML = JSON.stringify(json);
                 }
+                ordinaLista(json);
 
                 if(Modernizr.sessionstorage) {
                     sessionStorage.setItem("Sessione", JSON.stringify(json));
@@ -164,16 +165,16 @@
             }
         }
 
-        function ordinaLista() {
-            var obj = JSON.parse(sessionStorage.getItem("Sessione"));
+        function ordinaLista(json) {
             document.getElementById("lista").innerHTML = "";
-            obj.sort(function (a,b) {
+            console.log(json)
+            /*sort(function (a,b) {
                 var dataA = new Date(a.data), dataB = new Date(b.data);
                 return dataA - dataB
             })
             for(var i = 0; i < obj.length; i++) {
                 inserisci(obj[i].item, obj[i].data)
-            }
+            }*/
 
         }
 
