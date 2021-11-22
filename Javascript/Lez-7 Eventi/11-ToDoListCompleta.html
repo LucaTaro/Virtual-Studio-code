@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="style1.css">
 </head>
 <body>
-
+    <h1>TO DO LIST</h1>
+    <h2>Cosa da fare</h2>
     <div class="wrapper">
         <div class="input">
             <input type="text" id="item" placeholder="Inserisci la cosa da fare"><br>
@@ -29,6 +30,7 @@
         <div id="vecchiaVers">
             <!-- Solo ne caso in cui c'è qualcosa salvato nella local o session storage stampo gli item in formato json-->
         </div>
+        <footer id="footer">Copyright © 2021 Gruppo_3 Inc. Tutti i diritti riservati ai proprietari: Alessandro, Andrea, Joseph, Luca e Riccardo</footer>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -137,6 +139,7 @@
                 }*/
                 if(document.querySelector(".hidden")) {
                     document.querySelector(".hidden").classList.remove("hidden");
+                    document.querySelector(".hidden1").classList.remove("hidden1");
                 }
                 
                 var jsonTxt = document.createTextNode('Versione JSON')
@@ -175,6 +178,7 @@
 
         function ordinaLista() {
             var obj = JSON.parse(sessionStorage.getItem("Sessione"));
+            document.getElementById("lista").innerHTML = "";
             obj.sort(function (a,b) {
                 var dataA = new Date(a.data), dataB = new Date(b.data);
                 return dataA - dataB
@@ -188,10 +192,12 @@
         var btn = document.getElementById("btn");
         btn.addEventListener("click", lista, false);
 
+        //buttone per ordinare
         var dataTxt = document.createTextNode('Ordina per data');
         var ordina = document.createElement('button');
         ordina.appendChild(dataTxt)
         document.querySelector(".wrapper").appendChild(ordina);
+        ordina.setAttribute("class", "hidden1");
         ordina.addEventListener("click", ordinaLista, false);
 
         var btnStampa = document.getElementById("btnStampa");
@@ -200,12 +206,18 @@
         var btnRecupera = document.getElementById("btnRecupera");
         btnRecupera.addEventListener("click", recupera, false);
 
+        //bottone per modificare vecchia lista
         var btnVecchiaList = document.createElement("button");
         var btnVecchiaListTxt = document.createTextNode("Modifica vecchia versione");
         btnVecchiaList.appendChild(btnVecchiaListTxt);
         document.querySelector(".wrapper").appendChild(btnVecchiaList);
         btnVecchiaList.setAttribute("class", "hidden");
         btnVecchiaList.addEventListener("click", stampaVecchia, false);
+
+        var header = document.createElement('header')
+        header.setAttribute('id','header')
+        document.querySelector('body').prepend(header)
+        header.appendChild(document.querySelector('h1'))
 
     </script>
     
