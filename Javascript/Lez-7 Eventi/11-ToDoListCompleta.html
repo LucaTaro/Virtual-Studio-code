@@ -5,9 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do list</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="normalize.css">    
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather:wght@700&family=Poppins:wght@100;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Merriweather:wght@700&family=Poppins:wght@100;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style1.css">
 </head>
 <body>
@@ -90,6 +95,7 @@
                     document.getElementById("data").value = toDoDate;
                     li.parentNode.removeChild(li);
                 }
+
             } else {
                 event.preventDefault();
                 alert("Nessun elemento selezionato, riprova")
@@ -97,7 +103,15 @@
             
         }
 
-        function stampa() {
+        function stampaTuttoDisordinato() {
+            stampa(1)
+        }
+
+        function stampaTuttoOrdinato() {
+            stampa(0)
+        }
+
+        function stampa(flag) {
             var list = document.querySelectorAll("span");
             var feed = document.getElementById("feedback");
             if (list.length > 0) {
@@ -106,14 +120,22 @@
                 for(var i = 0; i < list.length; i++) {
                     json.push({item: list[i].innerText, data: list[++i].innerText});
                 }
+
+                if (flag == 0) {
+                    json.sort(function (a, b) {
+                    var dataA = new Date(a.data), dataB = new Date(b.data);
+                    return dataA - dataB
+                    });
+                } 
+
                 for(var i = 0; i < json.length; i++) {
                     feed.innerHTML = JSON.stringify(json);
                 }
-                ordinaLista(json);
 
                 if(Modernizr.sessionstorage) {
                     sessionStorage.setItem("Sessione", JSON.stringify(json));
                 }
+
             } else {
                 event.preventDefault();
                 document.getElementById("feedback").innerHTML = "Nessuna lista da stampare";
@@ -128,7 +150,6 @@
             if(obj) {
                 if(document.querySelector(".hidden")) {
                     document.querySelector(".hidden").classList.remove("hidden");
-                    document.querySelector(".hidden1").classList.remove("hidden1");
                 }
                 
                 var jsonTxt = document.createTextNode('Versione JSON')
@@ -165,32 +186,18 @@
             }
         }
 
-        function ordinaLista(json) {
-            document.getElementById("lista").innerHTML = "";
-            console.log(json)
-            /*sort(function (a,b) {
-                var dataA = new Date(a.data), dataB = new Date(b.data);
-                return dataA - dataB
-            })
-            for(var i = 0; i < obj.length; i++) {
-                inserisci(obj[i].item, obj[i].data)
-            }*/
-
-        }
-
         var btn = document.getElementById("btn");
         btn.addEventListener("click", lista, false);
 
         //buttone per ordinare
-        var dataTxt = document.createTextNode('Ordina per data');
+        var dataTxt = document.createTextNode('Crea versione stampabile ordinata per data');
         var ordina = document.createElement('button');
         ordina.appendChild(dataTxt)
         document.querySelector(".wrapper").appendChild(ordina);
-        ordina.setAttribute("class", "hidden1");
-        ordina.addEventListener("click", ordinaLista, false);
+        ordina.addEventListener("click", stampaTuttoOrdinato, false);
 
         var btnStampa = document.getElementById("btnStampa");
-        btnStampa.addEventListener("click", stampa, false);
+        btnStampa.addEventListener("click", stampaTuttoDisordinato, false);
 
         var btnRecupera = document.getElementById("btnRecupera");
         btnRecupera.addEventListener("click", recupera, false);
