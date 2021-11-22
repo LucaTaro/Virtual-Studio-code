@@ -43,10 +43,13 @@
         var ul = document.createElement("ul");
         list.appendChild(ul);
 
+        //passa in argomento i valori inseriti dall'utente se si deve solo stampare, invece viene richiamata dalla funzione
+        //stampavecchia per riutilizzare il codice per stampare la lista nella sessione senza scrivere 2 funzioni praticamente uguali
         function lista(){
             inserisci(item.value, data.value);
         }
 
+        //stampa la lista dei To Do coi paramentri in input o dalla sessione in caso di restore
         function inserisci(toDoTxt, toDoDate){
             var li = document.createElement('li')
 
@@ -76,6 +79,7 @@
                 li.setAttribute('class','animate__animated animate__lightSpeedInLeft')
                 list.appendChild(li)
 
+                //resetto i campi in input
                 document.getElementById("item").value = ""
                 document.getElementById("data").value = null
 
@@ -100,14 +104,17 @@
             
         }
 
+        //tramite il button Stampa versione si richiama la funzione stampa che stamperà in modo disordinato
         function stampaTuttoDisordinato() {
             stampa(1)
         }
 
+        //tramite il button stampa ordinato richiama la versione stampa che stamperà in modo ordinato
         function stampaTuttoOrdinato() {
             stampa(0)
         }
 
+        //Arriverà 0 o 1 in base al tasto cliccato
         function stampa(flag) {
             var list = document.querySelectorAll("span");
             var feed = document.getElementById("feedback");
@@ -118,6 +125,7 @@
                     json.push({item: list[i].innerText, data: list[++i].innerText});
                 }
 
+                //controllo del tasto cliccato
                 if (flag == 0) {
                     json.sort(function (a, b) {
                     var dataA = new Date(a.data), dataB = new Date(b.data);
@@ -144,11 +152,13 @@
             if(Modernizr.sessionstorage) {
                 var obj = JSON.parse(sessionStorage.getItem("Sessione"));
             }
+            //se esiste una sessione
             if(obj) {
                 if(document.querySelector(".hidden")) {
                     document.querySelector(".hidden").classList.remove("hidden");
                 }
                 
+                //creo i bottoni per stampare la varie versioni
                 var jsonTxt = document.createTextNode('Versione JSON')
                 var json = document.createElement('button')
                 json.appendChild(jsonTxt)
@@ -179,6 +189,7 @@
             var obj = JSON.parse(sessionStorage.getItem("Sessione"));
             document.getElementById("lista").innerHTML = "";
             for(var i = 0; i < obj.length; i++) {
+                //si passano i dati della sessione per stamparli come se fossero input dell'utente
                 inserisci(obj[i].item, obj[i].data)
             }
         }
@@ -207,21 +218,25 @@
         btnVecchiaList.setAttribute("class", "hidden");
         btnVecchiaList.addEventListener("click", stampaVecchia, false);
 
+        //creazione dei h1
         var h1 = document.createElement('h1')
         var h1Txt = document.createTextNode("TO DO LIST");
         h1.appendChild(h1Txt);
         document.body.appendChild(h1)
 
+        //creazione dei header
         var header = document.createElement('header')
         header.setAttribute('id','header')
         document.querySelector('body').prepend(header)
         header.appendChild(document.querySelector('h1'))
 
+        //creazione dei h2
         var h2 = document.createElement('h2')
         var h2Txt = document.createTextNode("Cosa da fare");
         h2.appendChild(h2Txt);
         document.body.insertBefore(h2, document.querySelector(".wrapper", h2))
 
+        //creazione dei footer
         var footer = document.createElement('footer')
         var footerTxt = document.createTextNode("Copyright © 2021 Gruppo_3 Inc. Tutti i diritti riservati ai proprietari: Alessandro, Andrea, Joseph, Luca e Riccardo");
         footer.appendChild(footerTxt);
