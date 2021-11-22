@@ -40,6 +40,7 @@
         var list = document.getElementById("lista");
         var ul = document.createElement("ul");
         list.appendChild(ul);
+        //var arrayid = [];
 
         function lista(){
             inserisci(item.value, data.value);
@@ -49,6 +50,7 @@
             var li = document.createElement('li')
 
             if ((toDoDate) && (toDoTxt)) {
+            //document.getElementById("lista").innerHTML = "";
                 var toDoTxtNode = document.createTextNode(toDoTxt)
                 var toDoDateNode = document.createTextNode(toDoDate)
 
@@ -107,12 +109,16 @@
                     json.push({item: list[i].innerText, data: list[++i].innerText});
                 }
                 for(var i = 0; i < json.length; i++) {
+                    //feed.innerHTML += "Da fare: " + json[i].item + "<br>" + "Data: " + json[i].data + "<br><br>";
                     feed.innerHTML = JSON.stringify(json);
                 }
 
                 if(Modernizr.sessionstorage) {
+                    //id = "Sessione" + Math.random();
+                    //arrayid.push(id);
                     sessionStorage.setItem("Sessione", JSON.stringify(json));
                 }
+                //document.getElementById("lista").innerHTML = "";
             } else {
                 event.preventDefault();
                 document.getElementById("feedback").innerHTML = "Nessuna lista da stampare";
@@ -123,8 +129,14 @@
             document.getElementById("vecchiaVers").innerHTML = "";
             if(Modernizr.sessionstorage) {
                 var obj = JSON.parse(sessionStorage.getItem("Sessione"));
+                //var obj = JSON.parse(sessionStorage.getItem(arrayid[arrayid.lenght-2]));
             }
-            if(obj) {
+            if(obj) {/*VECCHIA VERSIONE
+                document.getElementById("vecchiaVers").innerHTML = "";
+                for(var i = 0; i < obj.length; i++) {
+                    //document.getElementById("vecchiaVers").innerHTML += "Item: " + obj[i].item + "<br>" + "Data: " + obj[i].data + "<br><br>";
+                    document.getElementById("vecchiaVers").innerHTML += JSON.stringify(obj);
+                }*/
                 if(document.querySelector(".hidden")) {
                     document.querySelector(".hidden").classList.remove("hidden");
                     document.querySelector(".hidden1").classList.remove("hidden1");
