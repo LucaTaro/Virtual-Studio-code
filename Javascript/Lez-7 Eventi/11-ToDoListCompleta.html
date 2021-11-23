@@ -104,6 +104,15 @@
             
         }
 
+        function stampaVecchia() {
+            var obj = JSON.parse(sessionStorage.getItem("Sessione"));
+            document.getElementById("lista").innerHTML = "";
+            for(var i = 0; i < obj.length; i++) {
+                //si passano i dati della sessione per stamparli come se fossero input dell'utente
+                inserisci(obj[i].item, obj[i].data)
+            }
+        }
+
         //tramite il button Stampa versione si richiama la funzione stampa che stamperà in modo disordinato
         function stampaTuttoDisordinato() {
             stampa(1)
@@ -185,15 +194,6 @@
 
         }
 
-        function stampaVecchia() {
-            var obj = JSON.parse(sessionStorage.getItem("Sessione"));
-            document.getElementById("lista").innerHTML = "";
-            for(var i = 0; i < obj.length; i++) {
-                //si passano i dati della sessione per stamparli come se fossero input dell'utente
-                inserisci(obj[i].item, obj[i].data)
-            }
-        }
-
         var btn = document.getElementById("btn");
         btn.addEventListener("click", lista, false);
 
@@ -224,24 +224,24 @@
         h1.appendChild(h1Txt);
         document.body.appendChild(h1)
 
-        //creazione del header
-        var header = document.createElement('header')
-        header.setAttribute('id','header')
-        document.querySelector('body').prepend(header)
-        header.appendChild(document.querySelector('h1'))
-
         //creazione del h2
         var h2 = document.createElement('h2')
         var h2Txt = document.createTextNode("Cosa da fare");
         h2.appendChild(h2Txt);
         document.body.insertBefore(h2, document.querySelector(".wrapper", h2))
 
+        //creazione del header
+        var header = document.createElement('header')
+        header.setAttribute('id','header')
+        document.querySelector('body').prepend(header)
+        header.appendChild(document.querySelector('h1'))
+
         //creazione del footer
         var footer = document.createElement('footer')
         var footerTxt = document.createTextNode("Copyright © 2021 Gruppo_3 Inc. Tutti i diritti riservati ai proprietari: Alessandro, Andrea, Joseph, Luca e Riccardo");
         footer.appendChild(footerTxt);
         footer.setAttribute('id','footer')
-        document.querySelector('body').appendChild(footer)
+        document.querySelector(".wrapper").insertAdjacentElement("afterend", footer)
 
 
     </script>
