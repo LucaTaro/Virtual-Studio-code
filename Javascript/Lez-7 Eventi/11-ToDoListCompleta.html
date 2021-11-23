@@ -54,8 +54,9 @@
             var li = document.createElement('li')
 
             if ((toDoDate) && (toDoTxt)) {
+                toDoDate = toDoDate.split('-').reverse().join('-');
                 var toDoTxtNode = document.createTextNode(toDoTxt)
-                var toDoDateNode = document.createTextNode(toDoDate)
+                var toDoDateNode = document.createTextNode(toDoDate)                
 
                 var toDoTxtSpan = document.createElement('span')
                 var toDoDateSpan = document.createElement('span')
@@ -109,6 +110,7 @@
             document.getElementById("lista").innerHTML = "";
             for(var i = 0; i < obj.length; i++) {
                 //si passano i dati della sessione per stamparli come se fossero input dell'utente
+                obj[i].data = obj[i].data.split('-').reverse().join('-');
                 inserisci(obj[i].item, obj[i].data)
             }
         }
