@@ -16,7 +16,6 @@ button {
     background-color: #B983FF;
     border-radius: 0.4rem;
     border: 0.2rem solid rgb(166, 96, 246);
-    transition: all 0.4s ease-in-out;
 }
 
 input {
@@ -77,6 +76,7 @@ h2{
     border: 0.1rem solid rgb(166, 96, 246);
     margin: auto;
     width: 25%;
+    box-shadow: 1rem 0.8rem lightskyblue;
 }
 
 #feedback {
