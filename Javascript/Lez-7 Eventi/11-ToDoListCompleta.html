@@ -197,15 +197,15 @@
         var btn = document.getElementById("btn");
         btn.addEventListener("click", lista, false);
 
+        var btnStampa = document.getElementById("btnStampa");
+        btnStampa.addEventListener("click", stampaTuttoDisordinato, false);
+
         //buttone per ordinare
         var dataTxt = document.createTextNode('Crea versione stampabile ordinata per data');
         var ordina = document.createElement('button');
-        ordina.appendChild(dataTxt)
-        document.querySelector(".wrapper").appendChild(ordina);
+        ordina.appendChild(dataTxt);
+        btnStampa.insertAdjacentElement("afterend", ordina);
         ordina.addEventListener("click", stampaTuttoOrdinato, false);
-
-        var btnStampa = document.getElementById("btnStampa");
-        btnStampa.addEventListener("click", stampaTuttoDisordinato, false);
 
         var btnRecupera = document.getElementById("btnRecupera");
         btnRecupera.addEventListener("click", recupera, false);
@@ -214,29 +214,29 @@
         var btnVecchiaList = document.createElement("button");
         var btnVecchiaListTxt = document.createTextNode("Modifica vecchia versione");
         btnVecchiaList.appendChild(btnVecchiaListTxt);
-        document.querySelector(".wrapper").appendChild(btnVecchiaList);
+        btnRecupera.insertAdjacentElement("afterend", btnVecchiaList)
         btnVecchiaList.setAttribute("class", "hidden");
         btnVecchiaList.addEventListener("click", stampaVecchia, false);
 
-        //creazione dei h1
+        //creazione del h1
         var h1 = document.createElement('h1')
         var h1Txt = document.createTextNode("TO DO LIST");
         h1.appendChild(h1Txt);
         document.body.appendChild(h1)
 
-        //creazione dei header
+        //creazione del header
         var header = document.createElement('header')
         header.setAttribute('id','header')
         document.querySelector('body').prepend(header)
         header.appendChild(document.querySelector('h1'))
 
-        //creazione dei h2
+        //creazione del h2
         var h2 = document.createElement('h2')
         var h2Txt = document.createTextNode("Cosa da fare");
         h2.appendChild(h2Txt);
         document.body.insertBefore(h2, document.querySelector(".wrapper", h2))
 
-        //creazione dei footer
+        //creazione del footer
         var footer = document.createElement('footer')
         var footerTxt = document.createTextNode("Copyright © 2021 Gruppo_3 Inc. Tutti i diritti riservati ai proprietari: Alessandro, Andrea, Joseph, Luca e Riccardo");
         footer.appendChild(footerTxt);
