@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Recuperare JSON da risorse esterne</h1>
+
+    <div id="demo"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        const risorsa = "https://jsonplaceholder.typicode.com/posts";
+        var http = new XMLHttpRequest();
+
+        http.open("GET", risorsa);
+        http.send();
+
+        http.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                console.log(http.responseText);
+                var post = JSON.parse(this.responseText)
+
+                for(var i = 0; i < post.length; i++) {
+                    document.getElementById("demo").innerHTML += "Titolo: " + post[i].title + "<br>"
+                }
+            }
+        }
+
+
+        var datiOBJ = [];//verrà fuori un array in array. Per fare 1 solo array fare un for
+        fetch(risorsa).then(data => {return data.json()}).then(res => {
+            this.datiOBJ.push(res)
+        })
+
+
+        $.ajax({
+            url: "https://reqres.in/api/users?page=1",
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+                stampaDati(data);
+            },
+            fail: function() {
+                console.log("To mare");
+            }
+        })
+
+        function stampaDati(data) {
+            var dati = data;
+        }
+
+    </script>
+    
+</body>
+</html>
