@@ -54,6 +54,54 @@
             var dati = data;
         }
 
+        // $.ajax({
+        //     url: 'https://reqres.in/api/users',
+        //     type: 'POST',
+        //     data: {
+        //         name: "Dario Mennillo",
+        //         ruolo: "docente",
+        //         materie: ['Javascript', 'Angular', 'Jquery']
+        //     },
+        //     success: function (response) {
+        //         console.log(response);
+        //     }
+        // });
+
+        // $.ajax({
+        //     url: 'https://reqres.in/api/users/2',
+        //     type: 'DELETE',
+        //     dataType: 'json',
+        //     success: function (data) {
+        //         console.log(data);
+        //     },
+        //     complete: function (data) {
+        //         console.log(data.status);
+        //     }
+        // })
+
+        // $.ajax({
+        //     url: 'https://reqres.in/api/login',
+        //     type: 'POST',
+        //     // dataType: 'json',
+        //     data: {
+        //         "email": "eve.holt@reqres.in",
+        //         "password": "cityslicka"
+        //     },
+        //     success: function(data){
+        //         console.log(data);
+        //     }
+
+        // })
+
+        $.get('https://reqres.in/api/users', function(data){
+            console.log(data);
+            var dati = [];
+            $.each(data.data, function(key, val){
+                dati.push(key + ' ' + val.first_name)
+            })
+            console.log(dati);
+        });
+
     </script>
     
 </body>
