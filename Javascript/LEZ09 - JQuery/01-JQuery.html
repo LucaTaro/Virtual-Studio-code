@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="page">
+        <h1 id="titolo">Lista della spesa</h1>
+        <h2>Cose da comprare</h2>
+        <ul>
+            <li id="uno" class="rosso">Pasta</li>
+            <li id="due" class="rosso">Pane</li>
+            <li id="tre" class="rosso">Olio</li>
+            <li id="quattro" class="rosso">Acqua</li>
+        </ul>
+        <button>Chiudi tutto</button>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $("#uno") //var uno = document.getElementById("uno")
+
+        $("li") //var li = document.getElementByTagName("li")
+
+        $(".rosso") //var rosso = document.getElementsByClassName("rosso")
+
+        $(":header") //: sono un filtro per tutti i tag h
+
+        $("li:lt(2)") //seleziona i primi 2 della lista
+
+        $("#titolo").addClass("rosso");
+        $(":header").addClass("rosso");
+
+        $("li:lt(2)").hide().fadeIn(2000);
+        $("li").hide().slideDown(2000);
+
+        //addEventListener
+        $("li").on("click", function() {
+            $(this).hide()
+        })
+
+        //verifica se la pagina è pronta
+        $("document").ready(function() {
+            $("button").click(function() {
+                $("ul").hide().delay(2000).fadeIn(1400);
+            })
+        })
+        //equivalente
+        $(function() {
+            var $listaHTML = $("ul").html(); //legge html solo la prima occorrenza;
+            $("ul").append($listaHTML)
+        })
+
+
+
+    </script>
+</body>
+</html>

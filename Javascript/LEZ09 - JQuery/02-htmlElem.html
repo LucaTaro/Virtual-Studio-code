@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="page">
+        <h1 id="titolo">Lista della spesa</h1>
+        <h2>Cose da comprare</h2>
+        <ul>
+            <li id="uno" class="rosso">Pasta</li>
+            <li id="due" class="rosso">Pane</li>
+            <li id="tre" class="rosso">Olio</li>
+            <li id="quattro" class="rosso">Acqua</li>
+        </ul>
+        <button>Chiudi tutto</button>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(function() {
+            var $listaTesto = $("ul").text();
+            $("ul").append("<p>" + $listaTesto + "</p>")
+
+            var $testoLi = $("li").text();
+            $("ul").append("<p>Ho recuperato " + $testoLi + "</p>");
+
+            $("li:contains('Pane')").text("Focaccia");
+
+            //inserisco nuovi el
+            $("ul").before("<p>Lista aggiornata</p>");
+
+            $("ul").prepend("<li> Vino!</li>").addClass("rosso");
+
+            $("ul").append("<li> Bianca</li>");
+            $("li:last").after("<li> Bianca</li>");//stessa cosa di riga 40
+        })
+
+    </script>
+</body>
+</html>
