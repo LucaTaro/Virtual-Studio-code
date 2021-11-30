@@ -5,3 +5,7 @@
 .blue {
     color: blue;
 }
+
+.preferito {
+    text-decoration: underline;
+}

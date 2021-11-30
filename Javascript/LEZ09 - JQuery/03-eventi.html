@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="page">
+        <h1 id="titolo">Lista della spesa</h1>
+        <h2>Cose da comprare</h2>
+        <ul>
+            <li id="uno" class="rosso">Pasta</li>
+            <li id="due" class="rosso">Pane</li>
+            <li id="tre" class="rosso">Olio</li>
+            <li id="quattro" class="rosso">Acqua</li>
+        </ul>
+        <button>Chiudi tutto</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            var ids = "";
+            var $els = $("li");
+
+            $els.on("mouseover", function() {
+                ids = this.id;
+                $els.children("span").remove();
+                $(this).append("<span class='blue'>" + ids + "</span>")
+            })
+
+            $("#uno").click(function() {
+                $(this).removeClass("rosso").addClass("blu");
+            })
+
+            $("#quattro").on("mousecenter", function() {
+                $(this).text("omegalul")
+            })
+
+            $("#quattro").on("mouseleave", function() {
+                $(this).text("topkek")
+            })
+        })
+
+    </script>
+</body>
+</html>

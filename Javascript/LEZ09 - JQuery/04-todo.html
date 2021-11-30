@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <input type="text" id="item"><br>
+    <input type="button" value="Inserisci" id="btn">
+    <div id="demo"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $("#btn").click(function() {
+            var item = $("#item").val();
+            $("#demo").append("<li>" + item + "span class='elim'>X</span></li>");
+            $("#item").val("");
+        })
+
+        $("#item").keyup(function(event) {
+            if(event.keycode == 13) {
+                $("btn").click();
+            }
+        })
+
+        //alternative
+        $(document).on("click", "li", colora)
+
+        function colora() {
+            if($(this).hasClass("rosso")) {
+                $(this).removeClass("rosso");
+            } else {
+                $(this).addClass("blue");
+            }
+        }
+
+        $(document).on("click", ".elim", elimina);
+
+        function elimina() {
+            $(this).parent().remove();
+        }
+    </script>
+</body>
+</html>

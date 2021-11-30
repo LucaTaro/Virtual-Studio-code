@@ -39,6 +39,24 @@
 
             $("ul").append("<li> Bianca</li>");
             $("li:last").after("<li> Bianca</li>");//stessa cosa di riga 40
+
+
+            $("li:tre").removeClass("rosso");
+            $("li.rosso").addClass("preferito");
+            $("ul").attr("id", "listaSpesa");//setAttribute()
+
+            $("li").css({
+                "background-color": "yellow",
+                "border": "1px solid black",
+                "color": "blue",
+                "padding": "10px"
+            })
+
+            //for each per ogni elemento li
+            $("li").each(function() {
+                var $idSelezionati = this.id;
+                $(this).append("<span> &nbsp" + $idSelezionati + "</span>")
+            })
         })
 
     </script>
