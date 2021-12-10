@@ -1,12 +1,17 @@
 mysql -u root -p
 passworddatabase
+
 create database if not exists ESERCIZIO;
+
 grant all
 on ESERCIZIO.*
 to 'app_generation'@'localhost';
-quit
+
+
 mysql -uapp_generation -pgeneration_2021
+
 use ESERCIZIO;
+
 CREATE TABLE IF NOT EXISTS docente(
     nome varchar(20) not null,
     cognome varchar(30) not null,
@@ -21,6 +26,7 @@ CREATE TABLE IF NOT EXISTS docente(
     primary key (codicefiscale),
     key k_cogn(cognome)
 );
+
 CREATE TABLE IF NOT EXISTS corso(
     id int auto_increment,
     nome varchar(20) not null,
@@ -29,6 +35,7 @@ CREATE TABLE IF NOT EXISTS corso(
     primary key (id),
     key k_nome(nome)
 );
+
 CREATE TABLE IF NOT EXISTS aula(
     id int auto_increment,
     nome varchar(20) not null,
@@ -41,6 +48,7 @@ CREATE TABLE IF NOT EXISTS aula(
     lavagna enum('si', 'no'),
     primary key (id)
 );
+
 CREATE INDEX corso 
 ON corso(nome);
 CREATE INDEX docente 
