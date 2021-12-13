@@ -1,0 +1,27 @@
+.rosso{
+    color: red;
+}
+
+.blu{
+    color: blue;
+}
+
+.preferito{
+    text-decoration: underline;
+}
+
+#form label.error {
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#formAddContact label.error {
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#listaContatti {
+    display: flex;
+}

@@ -1,0 +1,103 @@
+.verde{
+    color: green;
+}
+
+.arancione{
+    color: orange;
+}
+
+.bordoRosso{
+    border: 1px solid red;
+    margin-bottom: 1px;
+}
+
+body{
+    font-family: 'Poppins','Futura',sans-serif;
+    
+    color: rgba(46, 46, 46, 0.952);
+}
+
+li{
+    list-style-type: none; 
+    display: flex;
+    justify-content: space-between;
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+h1{
+    color: #3d3d3c;
+}
+#btnInserisci{
+    background: #ffd000;
+    color: black;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 10px;
+}
+
+
+.btnMod{
+    
+    border-radius: 4px;
+    font-size: 12px;
+    background: #ffd000;
+    color: black;
+    padding: 10px;
+}
+.btn{
+    
+    color: white;
+    background-color: rgb(0, 110, 255);
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 10px;
+}
+#lista{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+
+    
+}
+.form{
+    /* display: flex;
+    justify-content: left; */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    
+    margin-right: 3px;
+}
+.wrapper{
+    width: 50%;
+    margin: 0 auto;
+}
+.mt50{
+    margin-top: 50px;
+    margin-bottom: 10px;
+    background: rgb(0, 110, 255);
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 10px;
+}
+.data{
+    color: rgba(105, 105, 105, 0.952);
+    display: flex;
+    justify-content: center;
+    
+}
+
+.wrap2 {
+   display: inline;
+}
+
+.wrap3 {
+    display: inline;
+}
+
+/* .bottoni{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+} */
