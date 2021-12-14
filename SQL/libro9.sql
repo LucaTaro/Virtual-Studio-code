@@ -1,4 +1,4 @@
-create table if not exists cliente(
+decreate table if not exists cliente(
     id int auto_increment,
     cognome varchar(40) not null,
     nome varchar(40),
@@ -54,3 +54,4 @@ create table if not exists ufficio(
     luogo_id int, 
     primary key(id)
 );
+

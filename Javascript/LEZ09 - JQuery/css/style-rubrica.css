@@ -2,6 +2,10 @@
     color: red;
 }
 
+body{
+    background-image: linear-gradient(to left, #9ffcff 0%, #05dffc 50%, #9ffcff 100%);
+}
+
 .blu{
     color: blue;
 }
@@ -24,4 +28,33 @@
 
 #listaContatti {
     display: flex;
+}
+
+.container{
+    max-height: 100ch;
+}
+
+#form {
+    align-items: center;
+}
+
+/* img {
+    max-width: 100%;
+    height: auto;
+} */
+
+/* .card{
+    width: 10%;
+} */
+
+/* h5 {
+    font-size: 0.5rem;
+} */
+
+#btnMostra {
+    width: 15%;
+}
+
+.card {
+    cursor: pointer;
 }
